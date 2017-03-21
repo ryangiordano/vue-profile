@@ -19,5 +19,33 @@ export const AnimationMixin ={
         onComplete:done
       })
     },
+    scaleXEnter(el,done){
+      let tl = new TimelineMax;
+      tl.from(el,this.duration,{
+        scaleX:0,
+        onComplete:done
+      })
+    },
+    scaleXLeave(el,done){
+      let tl = new TimelineMax;
+      tl.to(el,this.duration,{
+        scaleX:0,
+        onComplete:done
+      })
+    },
+    scaleYEnter(el,done){
+      let tl = new TimelineMax;
+      tl.from(el,this.duration,{
+        scaleY:0,
+        onComplete:done
+      })
+    },
+    scaleYLeave(el,done){
+      let tl = new TimelineMax;
+      tl.to(el,this.duration,{
+        scaleY:0,
+        onComplete:done
+      })
+    },
   }
 }

@@ -1,32 +1,35 @@
 <template lang="html">
-  <div class="menu-back">
-    <router-link to="/" tag="li">Status</router-link >
-    <router-link to="/" tag="li">Skills</router-link >
-    <router-link to="/" tag="li">Equipment</router-link >
-    <router-link to="/" tag="li">Join Party</router-link >
+  <div class="side-menu">
+    <router-link :to="{name:'status'}" tag="li"exact>Status</router-link >
+    <router-link :to="{name:'skills'}" tag="li">Skills</router-link >
+    <router-link :to="{name:'equipment'}" tag="li">Equipment</router-link >
+    <router-link :to="{name:'join-party'}" tag="li" >Join Party</router-link >
     <!-- <router-link to="/" tag="li">Journal</router-link > -->
-    <router-link to="/" tag="li">Title Screen</router-link >
+    <router-link to="/" tag="li" exact>Title Screen</router-link >
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data:function(){
+    return{
+
+    }
+  }
+
+}
 </script>
 
 <style scoped>
-.menu-back {
+.side-menu {
     background-color: rgba(40, 100, 201, 0.71);
     padding: 40px;
     border-radius: 5px;
     border: 3px solid #f4f4f4;
 }
-
-
-/**
-   Coded by /u/j0be in scss.
-   See scss source here -> http://codepen.io/j0be/pen/MKRVyN
-*/
-
+.router-link-active{
+  background-color:rgba(142, 199, 241, 0.56);
+}
 
 li {
     list-style: none;
@@ -38,19 +41,4 @@ li {
     transition: .3s ease all;
 }
 
-li:before {
-    opacity: 0;
-}
-
-li:hover:before {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7db9e8+0,ffffff+100&1+0,0+100 */
-    background: -moz-linear-gradient(45deg, rgba(125, 185, 232, 1) 0%, rgba(255, 255, 255, 0) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, rgba(125, 185, 232, 1) 0%, rgba(255, 255, 255, 0) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, rgba(125, 185, 232, 1) 0%, rgba(255, 255, 255, 0) 100%);
-    /* W3C, */
-    transition: .3s ease all;
-    opacity: 1
-}
 </style>
