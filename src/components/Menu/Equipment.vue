@@ -4,6 +4,9 @@
 
 <script>
 export default {
+  created(){
+    this.$emit('pageLoad',{stateText:'These are the technologies I\'ve picked up along the way!'})
+  }
 }
 </script>
 

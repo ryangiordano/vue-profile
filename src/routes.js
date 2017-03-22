@@ -4,6 +4,7 @@ import Status from './components/Menu/Status.vue';
 import Skills from './components/Menu/Skills.vue';
 import Equipment from './components/Menu/Equipment.vue';
 import JoinParty from './components/Menu/JoinParty.vue';
+import Adventures from './components/Menu/Adventures.vue';
 
 export const routes = [{
         path: '/',
@@ -13,41 +14,47 @@ export const routes = [{
     {
         path: '/main-menu',
         component: MenuScreen,
-        children: [
-          {
-            path:'',
-            name:'status',
-            component:Status
-          },
+        children: [{
+                path: '',
+                name: 'status',
+                component: Status
+            },
             {
                 path: 'status',
-                              name:'status',
+                name: 'status',
                 component: Status
             },
             {
                 path: 'equipment',
-                              name:'equipment',
+                name: 'equipment',
                 component: Equipment
             },
             {
+                path: 'adventures',
+                name: 'adventures',
+                component: Adventures
+            },
+            {
                 path: 'join-party',
-                              name:'join-party',
+                name: 'join-party',
                 component: JoinParty
             },
             {
                 path: 'skills',
-                              name:'skills',
+                name: 'skills',
                 component: Skills
             },
             {
-              path:'*',
-              redirect:'status'
+                path: '*',
+                redirect: 'status'
             }
 
         ]
     },
     {
         path: '*',
-        redirect: Home
+        redirect: {
+            name: 'Home'
+        }
     }
 ]

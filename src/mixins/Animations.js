@@ -47,5 +47,12 @@ export const AnimationMixin ={
         onComplete:done
       })
     },
+    textEnter(el,done){
+      let tl = new TimelineMax;
+      
+    },
+    test(el,done){
+
+    }
   }
 }

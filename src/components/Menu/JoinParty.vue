@@ -4,6 +4,9 @@
 
 <script>
 export default {
+  created(){
+    this.$emit('pageLoad',{stateText:'If you\'re interested in teaming up together, drop me a line.'})
+  }
 }
 </script>
 
