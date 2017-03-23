@@ -25,7 +25,7 @@ export default {
     characterDetail:CharacterDetail
   },
   created(){
-    this.$emit('pageLoad',{stateText:'A general overview of myself.'})
+    this.$emit('pageLoad',{stateText:'A general overview of the party.'})
   },
   methods:{
     viewDetails(e){

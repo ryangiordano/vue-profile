@@ -86,7 +86,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#268cd1', end
     color: #f4f4f4;
     font-family: 'VT323', monospace;
     font-size: 25px;
-    cursor: pointer;
+
     /*padding: 5px;*/
     transition: .3s ease all;
 }

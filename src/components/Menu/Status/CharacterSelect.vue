@@ -1,5 +1,5 @@
 <template lang="html">
-<div class="inner-menu row" >
+<div class="inner-menu row" style="cursor:pointer">
   <div class="portrait col-xs-2">
 <img :src="imgLoc" alt="" class="char-portrait">
   </div>
@@ -51,7 +51,7 @@ export default {
       return {width:xpFill+"%"};
     },
     imgLoc(){
-      return `../src/${this.character.img}`
+      return `../src/${this.character.img.main}`
     },
     yearsOfExperience(){
       let startTime =new Date(...this.character.startDate);
