@@ -1,10 +1,11 @@
 import Home from './components/Home.vue';
 import MenuScreen from './components/Menu/MenuScreen.vue';
-import Status from './components/Menu/Status.vue';
-import Skills from './components/Menu/Skills.vue';
-import Equipment from './components/Menu/Equipment.vue';
-import JoinParty from './components/Menu/JoinParty.vue';
-import Adventures from './components/Menu/Adventures.vue';
+import Status from './components/Menu/Status/Status.vue';
+import Skills from './components/Menu/Skills/Skills.vue';
+import Equipment from './components/Menu/Equipment/Equipment.vue';
+import JoinParty from './components/Menu/Party/JoinParty.vue';
+import Adventures from './components/Menu/Quests/Adventures.vue';
+import CharacterDetail from './components/Menu/Status/CharacterDetail.vue';
 
 export const routes = [{
         path: '/',
@@ -16,9 +17,13 @@ export const routes = [{
         component: MenuScreen,
         children: [{
                 path: '',
-                name: 'status',
-                component: Status
+                redirect:'status'
             },
+            {
+                    path: '/status/detail/:id',
+                    name: 'detail',
+                    component: CharacterDetail
+                },
             {
                 path: 'status',
                 name: 'status',

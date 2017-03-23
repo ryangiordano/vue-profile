@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="side-menu">
-    <router-link :to="{name:'status'}" tag="li"exact>Status</router-link >
+    <router-link :to="{name:'status'}" :class="active" tag="li"exact>Status</router-link >
     <router-link :to="{name:'skills'}" tag="li">Skills</router-link >
     <router-link :to="{name:'equipment'}" tag="li">Equipment</router-link >
 
@@ -16,6 +16,21 @@ export default {
         return {
 
         }
+    },
+    computed:{
+      active(){
+        let active;
+        console.log(this.$route.fullPath.indexOf('/status/detail/')>=0);
+        if(this.$route.fullPath.indexOf('/status/detail/')>=0){
+          active='router-link-active';
+        }else{
+          active='';
+        }
+        return active;
+      }
+    },
+    created(){
+      console.log(this.$route.fullPath);
     }
 
 }

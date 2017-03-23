@@ -49,10 +49,18 @@ export const AnimationMixin ={
     },
     textEnter(el,done){
       let tl = new TimelineMax;
-      
+
     },
     test(el,done){
 
+    },
+    fadeInUp(el,done){
+      let tl = new TimelineMax;
+      tl.from(el,this.duration,{
+        y:20,
+        opacity:0,
+        onComplete:done
+      })
     }
   }
 }

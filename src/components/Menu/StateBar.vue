@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 p{
-  font-size:20px;
+  font-size:25px;
   margin:0
 }
 
