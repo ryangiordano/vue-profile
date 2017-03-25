@@ -20,7 +20,7 @@ export default {
     computed:{
       active(){
         let active;
-        console.log(this.$route.fullPath.indexOf('/status/detail/')>=0);
+        //When the sub page is loaded, maintain active class on router link.
         if(this.$route.fullPath.indexOf('/status/detail/')>=0){
           active='router-link-active';
         }else{

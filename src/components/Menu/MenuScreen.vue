@@ -11,7 +11,7 @@
 <transition @beforeEnter="test" @enter="scaleYEnter" @afterEnter="test" @enterCancel="test"
 @beforeLeave="test" @leave="test" @afterLeave="test" @leaveCanceled="test" :css="false" appear>  <side-bar></side-bar></transition>
 </div>
-  <div class="col-sm-9 col-xs-121">
+  <div class="col-sm-9 col-xs-12">
     <transition @leave="scaleYLeave" @enter="scaleYEnter":css="false" appear mode="out-in"><router-view @pageLoad="stateChange" :characters="characters" ></router-view></transition>
   </div>
 </div>
@@ -89,5 +89,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#268cd1', end
 
     /*padding: 5px;*/
     transition: .3s ease all;
+}
+p,h2,h1,h3,h4,h5,li,a{
+  color: #f4f4f4;
+  font-family: 'VT323', monospace;
 }
 </style>

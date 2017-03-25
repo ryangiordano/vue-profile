@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="inner-menu row" style="cursor:pointer">
   <div class="portrait col-xs-2">
-<img :src="imgLoc" alt="" class="char-portrait">
+<img :src="`../../../src/assets/img/${character.img.main}`" alt="" class="char-portrait">
   </div>
   <div class="status col-xs-7">
     <h3>{{character.name}}</h3>

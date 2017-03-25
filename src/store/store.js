@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import characters from './modules/characters';
+import skills from './modules/skills';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
@@ -26,6 +27,7 @@ export const store = new Vuex.Store({
     }
   },
   modules:{
-    characters
+    characters,
+    skills
   }
 })

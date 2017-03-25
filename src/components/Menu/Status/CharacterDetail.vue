@@ -103,7 +103,7 @@ export default {
     },
     methods: {
         navigateBack(e) {
-            console.log(e);
+          console.log(e.keyCode);
             if (e.keyCode == 27) {
                 return this.$router.go(-1)
             } else if (e.type === 'click') {

@@ -6,6 +6,7 @@ import Equipment from './components/Menu/Equipment/Equipment.vue';
 import JoinParty from './components/Menu/Party/JoinParty.vue';
 import Adventures from './components/Menu/Quests/Adventures.vue';
 import CharacterDetail from './components/Menu/Status/CharacterDetail.vue';
+import SkillsTab from './components/Menu/Skills/SkillsTab.vue';
 
 export const routes = [{
         path: '/',
@@ -47,7 +48,10 @@ export const routes = [{
             {
                 path: 'skills',
                 name: 'skills',
-                component: Skills
+                component: Skills,
+                children:[
+                  {path:':id',component:SkillsTab,name:'skills-tab'}
+                ]
             },
             {
                 path: '*',
