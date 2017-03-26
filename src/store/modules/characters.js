@@ -6,10 +6,10 @@ const state = {
         startDate:[2014,6,10,0,0],
         weapon: "Ecma Saber",
         skills:[
-          {name:'JavaScript',about:'About JavaScript',id:0,img:'js-icon.svg',lvl:5},
-          {name:'HTML',about:'About HTML',id:1,img:'html-icon.svg',lvl:5},
-          {name:'CSS',about:'About CSS',id:2,img:'css-icon.svg',lvl:4},
-          {name:'PHP',about:'About PHP',id:3,img:'php-icon.svg',lvl:3},
+          {name:'JavaScript',about:'About JavaScript',id:0,img:'js-icon.svg',lvl:9},
+          {name:'HTML',about:'About HTML',id:1,img:'html-icon.svg',lvl:10},
+          {name:'CSS',about:'About CSS',id:2,img:'css-icon.svg',lvl:9},
+          {name:'PHP',about:'About PHP',id:3,img:'php-icon.svg',lvl:7},
 
         ],
         img:{

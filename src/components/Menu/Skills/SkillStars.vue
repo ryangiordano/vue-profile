@@ -1,6 +1,7 @@
 <template lang="html">
   <ul class="star">
-    <li v-for="(star,index) in skill.lvl":key="index"><img :src="starSource" alt="">
+    <li v-for="(star,index) in skill.lvl" :key="index">
+      <img :src="index == skill.lvl-1 && skill.lvl % 2 == 0 || index < skill.lvl-1 ? '../../../../src/assets/img/star.svg' :  '../../../../src/assets/img/star-half.svg' " alt="">
     </li>
   </ul>
 </template>
@@ -10,8 +11,15 @@ export default {
   props:['skill'],
   computed:{
     starSource(e){
-      return '../../../../src/assets/img/star.svg'
+      console.log();
+      return
+    },
+    skillToStars(){
+      console.log(this.skill.lvl/2);
     }
+  },
+  created(){
+    console.log(this.skill.lvl/2);
   }
 }
 </script>
