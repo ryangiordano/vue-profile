@@ -2,7 +2,7 @@
 
     <div class="sub-menu">
       <div class="row"><div class="col-xs-4">
-        <img :src="imgLoc" alt="" class="char-portrait">
+        <img :src="`../../src/assets/img/${character.img.alt}`" alt="" class="char-portrait">
       </div>
         <div class="col-xs-4">
           <h3>{{character.name}}</h3>

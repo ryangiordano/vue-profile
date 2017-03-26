@@ -13,6 +13,7 @@
             <img class="skill-icon" :src="`../../../src/assets/img/${skill.img}`" alt="">
             <p>{{skill.name}}</p>
 
+            <div v-for="star in skill.lvl"><img src="../../../src/assets/img/star.svg" height="10px" alt=""></div>
           </div>
         </div>
       </div>
