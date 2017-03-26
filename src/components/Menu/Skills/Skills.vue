@@ -2,18 +2,19 @@
 <div class="sub-menu">
 <ul class="tabs">
   <li  v-for="(character,index) in characters" @click="switchCharacter(character)" :key="character.id" :class="character.id==chosenCharacter ? 'active':'' ">
-  <p><img class="portrait" :src="`../../src/assets/img/${character.img.alt}`" alt="">{{character.name}}</p>
+  <p>{{character.name}}</p>
 </li>
 </ul>
   <div class="row skills-box" >
     <div class="col-xs-12 ">
-<transition @enter="fadeEnter" @leave="fadeLeave" mode="out-in" >      <div class="character-skills" v-for="character in characters" v-if="chosenCharacter===character.id" :key="character.id" :ref="character.id">
+<transition @enter="fadeEnter" @leave="fadeLeave" mode="out-in" >
+  <div class="character-skills" v-for="character in characters" v-if="chosenCharacter===character.id" :key="character.id" :ref="character.id">
         <div class="" class="skill-row" v-for="skill in character.skills">
           <div class="col-xs-6">
             <img class="skill-icon" :src="`../../../src/assets/img/${skill.img}`" alt="">
             <p>{{skill.name}}</p>
+            <skill-stars :skill="skill"></skill-stars>
 
-            <div v-for="star in skill.lvl"><img src="../../../src/assets/img/star.svg" height="10px" alt=""></div>
           </div>
         </div>
       </div>
@@ -27,10 +28,13 @@
 import {
     AnimationMixin
 } from '../../../mixins/Animations';
-import CharacterSelect from '../Status/CharacterSelect.vue';
+import SkillStars from '../Skills/SkillStars.vue';
 export default {
     mixins: [AnimationMixin],
     props: ['characters'],
+    components: {
+      skillStars: SkillStars
+    },
     data: function() {
         return {
           duration:.2,
@@ -52,20 +56,17 @@ export default {
     },
     computed: {
         isActive(e) {
-          e.chosenCharacter
-          console.log( e);
+
           return 'active'
 
-        }
+        },
+
     }
 }
 </script>
 
 <style scoped>
-.portrait{
-  height:100px;
-  margin:0 10px 0 0;
-}
+
 .skill-row {
     margin: 10px 0 10px;
 }
@@ -76,6 +77,7 @@ export default {
 .character-skills{
   position:relative;
 }
+
 
 .skills-box {
     border-top: 3px solid #f4f4f4;
@@ -93,7 +95,8 @@ export default {
     margin: 5px 5px 15px;
     display: inline-block;
     min-width: 20%;
-    padding: 0 10px 0 0;
+    padding: 10px;
+    text-align:center;
     white-space: no-wrap;
   background-color:transparent;
     transition: ease .2s all;

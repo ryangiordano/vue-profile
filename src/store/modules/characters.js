@@ -8,8 +8,8 @@ const state = {
         skills:[
           {name:'JavaScript',about:'About JavaScript',id:0,img:'js-icon.svg',lvl:5},
           {name:'HTML',about:'About HTML',id:1,img:'html-icon.svg',lvl:5},
-          {name:'CSS',about:'About CSS',id:2,img:'css-icon.svg',lvl:5},
-          {name:'PHP',about:'About PHP',id:3,img:'php-icon.svg',lvl:5},
+          {name:'CSS',about:'About CSS',id:2,img:'css-icon.svg',lvl:4},
+          {name:'PHP',about:'About PHP',id:3,img:'php-icon.svg',lvl:3},
 
         ],
         img:{
