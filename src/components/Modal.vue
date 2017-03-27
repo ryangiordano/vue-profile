@@ -19,15 +19,13 @@ export default {
 
 <style lang="css">
 .overlay{
-  height:100vh;
-  width:100vw;
+  height:100%;
+  width:100%;
   display:flex;
-  position:fixed;
-  top:0;
-  left:0;
+  position:absolute;
   z-index:999;
   align-items:center;
   justify-content:center;
-  background-color:rgba(0,0,0,.7)
+  background-color:rgba(0,0,0,.5)
 }
 </style>

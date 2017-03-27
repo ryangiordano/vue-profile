@@ -17,11 +17,14 @@
 </div>
 
 </div>
+<app-modal v-if="showModal"></app-modal>
 </section>
 
 </template>
 
 <script>
+import {eventBus} from '../../main';
+import Modal from '../Modal.vue';
 import {
     AnimationMixin
 } from '../../mixins/Animations';
@@ -30,6 +33,7 @@ import StateBar from './StateBar.vue';
 export default {
     data: function() {
         return {
+          showModal:true,
             duration: .2,
             stateText:''
         }
@@ -43,16 +47,25 @@ export default {
     mixins: [AnimationMixin],
     components: {
         sideBar: SideBar,
-        stateBar: StateBar
+        stateBar: StateBar,
+        appModal:Modal
     },
     methods:{
       stateChange(e){
         this.stateText = e.stateText;
       },
+      toggleModal(skill){
+        this.showModal = !this.showModal;
+        console.log(skill);
+        console.log(this.showModal);
+      },
       changed(){
         console.log("changed");
       }
-    }
+    },
+    created(){
+      eventBus.$on('openModal',this.toggleModal);
+    },
 }
 </script>
 

@@ -6,7 +6,7 @@ import {store} from './store/store.js';
 
 export const eventBus = new Vue({
   data:{
-
+    showModal:false
   },
   methods:{
 

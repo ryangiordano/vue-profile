@@ -12,7 +12,7 @@
     <div class="col-xs-12 ">
 <transition @enter="fadeEnter" @leave="fadeLeave" mode="out-in" >
   <div class="character-skills" v-for="character in characters" v-if="chosenCharacter===character.id" :key="character.id" :ref="character.id">
-        <div class="" class="skill-row col-xs-12 col-sm-6" v-for="skill in character.skills" @click.native="showModal=true">
+        <div class="" class="skill-row col-xs-12 col-sm-6" v-for="skill in character.skills" @click="toggleModal(skill)">
             <p><img class="skill-icon" :src="`../../../src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
             <skill-stars :skill="skill"></skill-stars>
         </div>
@@ -20,22 +20,22 @@
 </transition>
     </div>
   </div>
-  <modal :name="Modal" v-if="showModal"></modal>
+
 </div>
 </template>
 
 <script>
-import Modal from '../Modal.vue';
 import {
     AnimationMixin
 } from '../../../mixins/Animations';
+import {eventBus} from '../../../main';
+
 import SkillStars from '../Skills/SkillStars.vue';
 export default {
     mixins: [AnimationMixin],
     props: ['characters'],
     components: {
       skillStars: SkillStars,
-      modal:Modal
     },
     data: function() {
         return {
@@ -55,6 +55,9 @@ export default {
         switchCharacter(character) {
             this.chosenCharacter = character.id;
 
+        },
+        toggleModal(skill){
+          eventBus.$emit('openModal',skill);
         }
     },
     computed: {
