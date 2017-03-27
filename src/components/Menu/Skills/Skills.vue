@@ -12,7 +12,7 @@
     <div class="col-xs-12 ">
 <transition @enter="fadeEnter" @leave="fadeLeave" mode="out-in" >
   <div class="character-skills" v-for="character in characters" v-if="chosenCharacter===character.id" :key="character.id" :ref="character.id">
-        <div class="" class="skill-row col-xs-12 col-sm-6" v-for="skill in character.skills">
+        <div class="" class="skill-row col-xs-12 col-sm-6" v-for="skill in character.skills" @click.native="showModal=true">
             <p><img class="skill-icon" :src="`../../../src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
             <skill-stars :skill="skill"></skill-stars>
         </div>
@@ -20,10 +20,12 @@
 </transition>
     </div>
   </div>
+  <modal :name="Modal" v-if="showModal"></modal>
 </div>
 </template>
 
 <script>
+import Modal from '../Modal.vue';
 import {
     AnimationMixin
 } from '../../../mixins/Animations';
@@ -32,13 +34,15 @@ export default {
     mixins: [AnimationMixin],
     props: ['characters'],
     components: {
-      skillStars: SkillStars
+      skillStars: SkillStars,
+      modal:Modal
     },
     data: function() {
         return {
           duration:.2,
             selectedCharacter: null,
-            chosenCharacter: 0
+            chosenCharacter: 0,
+            showModal:false
         }
     },
     created() {
@@ -61,6 +65,9 @@ export default {
         },
         isInactive(e){
           return 'inactive'
+        },
+        Modal(){
+          return "Modal"
         }
 
     }
@@ -73,13 +80,14 @@ export default {
 }
 .skill-row {
     margin: 10px 0 10px;
-    min-height:70px;
+    min-height:50px;
     display:flex;
     justify-content:flex-start;
     align-items:center;
     border-radius:5px;
     transition:.3s ease all;
     cursor:pointer;
+    padding:5px;
 }
 .skill-row:hover{
       background-color: rgba(71, 199, 137,.5);
@@ -87,7 +95,7 @@ transition:.3s ease all;
 }
 
 .skill-icon {
-    height: 30px;
+    height: 40px;
     margin-right:10px;
 }
 .character-skills{
