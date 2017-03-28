@@ -1,8 +1,8 @@
 <template lang="html">
 <div class="inner-menu row" style="cursor:pointer">
-  <div class="portrait col-xs-2">
+  <transition @enter="fadeInScale" appear><div class="portrait col-xs-2">
 <img :src="`../../../src/assets/img/${character.img.main}`" alt="" class="char-portrait">
-  </div>
+  </div></transition>
   <div class="status col-xs-7">
     <h3>{{character.name}}</h3>
     <h4>LVL {{yearsOfExperience}} {{character.class}}</h4>
@@ -26,11 +26,14 @@
 </template>
 
 <script>
+import {AnimationMixin} from '../../../mixins/Animations';
 export default {
   props:['character'],
+  mixins:[AnimationMixin],
   data:function(){
     return{
       day:0,
+      duration:1,
 
     }
   },

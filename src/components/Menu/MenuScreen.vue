@@ -17,14 +17,18 @@
 </div>
 
 </div>
-<app-modal v-if="showModal"></app-modal>
+<transition @enter="fadeEnter" @leave="fadeLeave">
+  <skill-modal :skill="skill" :show="showSkillModal" v-if="showSkillModal" @toggleSkillModal="showSkillModal=false" ></skill-modal>
+</transition>
 </section>
 
 </template>
 
 <script>
-import {eventBus} from '../../main';
-import Modal from '../Modal.vue';
+import {
+    eventBus
+} from '../../main';
+import SkillModal from '../SkillModal.vue';
 import {
     AnimationMixin
 } from '../../mixins/Animations';
@@ -33,38 +37,41 @@ import StateBar from './StateBar.vue';
 export default {
     data: function() {
         return {
-          showModal:true,
+            showModal: false,
             duration: .2,
-            stateText:''
+            stateText: '',
+            showSkillModal: false,
+            skill: null,
+
         }
     },
-    computed:{
-      characters(){
-        console.log(this);
-        return this.$store.getters.characters;
-      }
+    computed: {
+        characters() {
+            return this.$store.getters.characters;
+        }
     },
     mixins: [AnimationMixin],
     components: {
         sideBar: SideBar,
         stateBar: StateBar,
-        appModal:Modal
+        skillModal: SkillModal
     },
-    methods:{
-      stateChange(e){
-        this.stateText = e.stateText;
-      },
-      toggleModal(skill){
-        this.showModal = !this.showModal;
-        console.log(skill);
-        console.log(this.showModal);
-      },
-      changed(){
-        console.log("changed");
-      }
+    methods: {
+        stateChange(e) {
+            this.stateText = e.stateText;
+        },
+        changed() {}
     },
-    created(){
-      eventBus.$on('openModal',this.toggleModal);
+    created() {
+        eventBus.$on('toggleSkillModal', (skill) => {
+            this.showSkillModal = !this.showSkillModal;
+            this.skill = skill;
+            document.addEventListener("keydown", (e) => {
+                if (this.showSkillModal && e.keyCode == 27) {
+                    this.showSkillModal = false;
+                }
+            })
+        });
     },
 }
 </script>
@@ -80,14 +87,15 @@ section.menu {
 
 .sub-menu {
     overflow: hidden;
-    /*background-color: rgba(40, 100, 201, 0.71);*/background: rgba(38,140,209,1);
-background: -moz-linear-gradient(top, rgba(38,140,209,1) 0%, rgba(108,103,245,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(38,140,209,1)), color-stop(100%, rgba(108,103,245,1)));
-background: -webkit-linear-gradient(top, rgba(38,140,209,1) 0%, rgba(108,103,245,1) 100%);
-background: -o-linear-gradient(top, rgba(38,140,209,1) 0%, rgba(108,103,245,1) 100%);
-background: -ms-linear-gradient(top, rgba(38,140,209,1) 0%, rgba(108,103,245,1) 100%);
-background: linear-gradient(to bottom, rgba(38,140,209,1) 0%, rgba(108,103,245,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#268cd1', endColorstr='#6c67f5', GradientType=0 );
+    /*background-color: rgba(40, 100, 201, 0.71);*/
+    background: rgba(38, 140, 209, 1);
+    background: -moz-linear-gradient(top, rgba(38, 140, 209, 1) 0%, rgba(108, 103, 245, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(38, 140, 209, 1)), color-stop(100%, rgba(108, 103, 245, 1)));
+    background: -webkit-linear-gradient(top, rgba(38, 140, 209, 1) 0%, rgba(108, 103, 245, 1) 100%);
+    background: -o-linear-gradient(top, rgba(38, 140, 209, 1) 0%, rgba(108, 103, 245, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(38, 140, 209, 1) 0%, rgba(108, 103, 245, 1) 100%);
+    background: linear-gradient(to bottom, rgba(38, 140, 209, 1) 0%, rgba(108, 103, 245, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#268cd1', endColorstr='#6c67f5', GradientType=0);
     padding: 10px 20px;
     border-radius: 5px;
     border: 3px solid #f4f4f4;
@@ -99,12 +107,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#268cd1', end
     color: #f4f4f4;
     font-family: 'VT323', monospace;
     font-size: 25px;
-
     /*padding: 5px;*/
     transition: .3s ease all;
 }
-p,h2,h1,h3,h4,h5,li,a{
-  color: #f4f4f4;
-  font-family: 'VT323', monospace;
+
+p,
+h2,
+h1,
+h3,
+h4,
+h5,
+li,
+a {
+    color: #f4f4f4;
+    font-family: 'VT323', monospace;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .5)
 }
 </style>

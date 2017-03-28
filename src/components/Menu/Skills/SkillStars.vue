@@ -41,6 +41,7 @@ export default {
 <style lang="css">
 .star{
   padding:0;
+  
 }
 .star li{
   list-style:none;

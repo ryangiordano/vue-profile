@@ -61,6 +61,15 @@ export const AnimationMixin ={
         opacity:0,
         onComplete:done
       })
+    },
+    fadeInScale(el,done){
+      let tl = new TimelineMax;
+      tl.from(el,this.duration,{
+        scale:.5,
+        opacity:0,
+        ease: Elastic.easeOut.config(1, 0.75),
+        onComplete:done
+      })
     }
   }
 }
