@@ -112,6 +112,7 @@ export default {
         }
     },
     destroyed() {
+      console.log("destroyed");
         window.removeEventListener('keyup', this.navigateBack, false);
     }
 }

@@ -2,7 +2,7 @@
 <div class="sub-menu">
 <ul class="tabs">
   <li  v-for="(character,index) in characters" style="width:45%" @click="switchCharacter(character)" :key="character.id" :class="character.id==chosenCharacter ? 'active':'inactive' ">
-  <img class="char-portrait":src="`../../../src/assets/img/${character.img.main}`" alt="">
+  <transition @enter="fadeInScale" appear ><img class="char-portrait":src="`../../../src/assets/img/${character.img.main}`" alt=""></transition>
 <div class="side-info">
   <p>{{character.name}}</p>
   <p>{{character.class}}</p></div>
@@ -12,10 +12,16 @@
     <div class="col-xs-12 ">
         <transition @enter="fadeEnter" @leave="fadeLeave" mode="out-in" >
           <div class="character-skills" v-for="character in characters" v-if="chosenCharacter===character.id" :key="character.id" :ref="character.id">
-                <div class="" class="skill-row col-xs-12 col-sm-6" v-for="skill in character.skills" @click="toggleSkillModal(skill)">
-                  <div class="col-sm-6">  <p><img class="skill-icon" :src="`../../../src/assets/img/${skill.img}`" alt="">{{skill.name}}</p></div>
-                    <div class="col-sm-6"><skill-stars :skill="skill"></skill-stars></div>
+                <transition-group @enter="fadeEnterUp"  appear>
+                  <div class="" class="skill-row col-xs-12 col-md-6" v-for="(skill,index) in character.skills" @click="toggleSkillModal(skill)" :key="index" :data-index="index">
+                    <div class="col-sm-6 col-xs-6">
+                      <p><img class="skill-icon" :src="`../../../src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <skill-stars :skill="skill"></skill-stars>
+                    </div>
                 </div>
+              </transition-group>
               </div>
         </transition>
     </div>
@@ -35,6 +41,7 @@ export default {
     props: ['characters'],
     components: {
         skillStars: SkillStars,
+        duration:.5
     },
     data: function() {
         return {
@@ -55,6 +62,27 @@ export default {
         switchCharacter(character) {
             this.chosenCharacter = character.id;
 
+        },
+        fadeEnterUp(el,done){
+          let tl = new TimelineMax;
+          let delay= el.dataset.index*.05;
+          tl.from(el,1,{
+            opacity:0,
+            delay:delay,
+            y:20,
+                        ease: Elastic.easeOut.config(1, 0.3),
+            onComplete:done
+          })
+        },
+        fadeInScale(el,done){
+          let tl = new TimelineMax;
+          tl.from(el,.5,{
+            scale:.5,
+            opacity:0,
+            delay:.2,
+            ease: Elastic.easeOut.config(1, 0.75),
+            onComplete:done
+          })
         },
         toggleSkillModal(skill) {
           eventBus.$emit('toggleSkillModal',skill);
@@ -78,6 +106,7 @@ export default {
 </script>
 
 <style scoped>
+p{}
 .char-portrait {
     height: 80px;
 }
@@ -89,14 +118,14 @@ export default {
     justify-content: flex-start;
     align-items: center;
     border-radius: 5px;
-    transition: .3s ease all;
+    transition: .3s ease background-color;
     cursor: pointer;
     padding: 5px;
 }
 
 .skill-row:hover {
     background-color: rgba(71, 199, 137, .5);
-    transition: .3s ease all;
+    transition: .3s ease background-color;
 }
 
 .skill-icon {
@@ -131,7 +160,7 @@ ul {
     /*text-align:center;*/
     white-space: no-wrap;
     background-color: transparent;
-    transition: ease .2s all;
+    transition: ease .2s background-color;
     cursor: pointer;
     color: #747474;
     display: flex;

@@ -11,7 +11,7 @@ export default {
   mixins:[AnimationMixin],
   watch:{
     stateText(e){
-      console.log(e);
+
 
     }
   }
@@ -20,11 +20,6 @@ export default {
 
 <style scoped>
 p{
-  font-size:25px;
-  margin:0
-}
-
-@keyframes typing {
-  from{width:0}
+  font-size:20px;
 }
 </style>

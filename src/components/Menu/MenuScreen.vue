@@ -20,6 +20,9 @@
 <transition @enter="fadeEnter" @leave="fadeLeave">
   <skill-modal :skill="skill" :show="showSkillModal" v-if="showSkillModal" @toggleSkillModal="showSkillModal=false" ></skill-modal>
 </transition>
+<transition @enter="fadeEnter" @leave="fadeLeave">
+  <mail-modal :show="showMailModal" v-if="showMailModal" @toggleMailModal="showMailModal=false" ></mail-modal>
+</transition>
 </section>
 
 </template>
@@ -29,6 +32,7 @@ import {
     eventBus
 } from '../../main';
 import SkillModal from '../SkillModal.vue';
+import MailModal from '../MailModal.vue';
 import {
     AnimationMixin
 } from '../../mixins/Animations';
@@ -41,6 +45,7 @@ export default {
             duration: .2,
             stateText: '',
             showSkillModal: false,
+            showMailModal: false,
             skill: null,
 
         }
@@ -54,7 +59,8 @@ export default {
     components: {
         sideBar: SideBar,
         stateBar: StateBar,
-        skillModal: SkillModal
+        skillModal: SkillModal,
+        mailModal:MailModal
     },
     methods: {
         stateChange(e) {
@@ -69,6 +75,14 @@ export default {
             document.addEventListener("keydown", (e) => {
                 if (this.showSkillModal && e.keyCode == 27) {
                     this.showSkillModal = false;
+                }
+            })
+        });
+        eventBus.$on('toggleMailModal', () => {
+            this.showMailModal = !this.showMailModal;
+            document.addEventListener("keydown", (e) => {
+                if (this.showMailModal && e.keyCode == 27) {
+                    this.showMailModal = false;
                 }
             })
         });

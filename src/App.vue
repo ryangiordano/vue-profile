@@ -9,6 +9,7 @@
 
 <script>
 import {AnimationMixin} from './mixins/Animations';
+// import '../styles/stylesheet.css';
 
 export default {
   mixins:[AnimationMixin],
