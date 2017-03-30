@@ -2,13 +2,13 @@
 
     <div class="sub-menu">
       <div class="row"><div class="col-xs-4">
-        <img :src="`../../src/assets/img/${character.img.alt}`" alt="" class="char-portrait">
+        <img :src="`/src/assets/img/${character.img.alt}`" alt="" class="char-portrait">
       </div>
         <div class="col-xs-4">
           <h3>{{character.name}}</h3>
           <p>LVL {{yearsOfExperience}} {{character.class}}</p>
           <ul>
-            <li v-for="link in character.links"><a :href="link.link"><img :src="'../../src/'+link.img" /></a></li>
+            <li v-for="link in character.links"><a :href="link.link"><img :src="'/src/assets/img/'+link.img" /></a></li>
           </ul>
 
         </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="back" @click="navigateBack">
             <span class="back-carat"><</span>
-          <img src="../../../assets/img/esc.gif"class="back-esc" alt="">
+          <img src="/src/assets/img/esc.gif"class="back-esc" alt="">
 
         </div>
 

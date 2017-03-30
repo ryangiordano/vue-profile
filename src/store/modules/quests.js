@@ -1,16 +1,18 @@
 const state = {
     quests: [{
       name:"Redesign Website",
-      summary:"",
-      pages:[
-        {pageText:"This is some text from the page.",animationComponent:'website-1'},
-        {pageText:"This is some text from the page.",animationComponent:'website-2'},
-        {pageText:"This is some text from the page.",animationComponent:'website-3'},
-        {pageText:"This is some text from the page.",animationComponent:'website-4'},
-        {pageText:"This is some text from the page.",animationComponent:'website-5'},
-      ],
-      xpSkills:[{name:'JavaScript',img:'js.png',val:5},{name:'jQuery',img:'jquery.png',val:5}]
-      xpSkills:[{name:'HTML',img:'js.png',val:5},{name:'CSS',img:'js.png',val:5},{name:'Bootstrap',img:'js.png',val:5},]
+      link:"https://www.iiicareer.com",
+      copy:"About the quest",
+      xpSkills:[{name:'JavaScript',img:'js.png',val:5},{name:'jQuery',img:'jquery.png',val:5}],
+      charId:0
+
+    },
+    {
+      name:"Magazine Site",
+      link:"https://www.sakura.com",
+      copy:"About the quest",
+      xpSkills:[{name:'JavaScript',img:'js.png',val:5},{name:'jQuery',img:'jquery.png',val:5}],
+      charId:0
 
     }],
 }
@@ -18,8 +20,6 @@ const getters = {
     quests: state => {
         return state.quests
     },
-
-
 }
 const mutations = {
     // increment: (state, payload) => {

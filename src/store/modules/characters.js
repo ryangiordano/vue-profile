@@ -173,12 +173,12 @@ const state = {
             links: [{
                     site: 'Github',
                     link: 'https://github.com/thedaruma',
-                    img: 'assets/img/github.png'
+                    img: 'github.png'
                 },
                 {
                     site: 'LinkedIn',
                     link: 'https://www.linkedin.com/in/ryan-giordano-a9b11488/',
-                    img: 'assets/img/linkedin.png'
+                    img: 'linkedin.png'
                 }
             ]
         },
@@ -246,12 +246,12 @@ const state = {
             links: [{
                     site: 'Github',
                     link: 'https://github.com/loxgio',
-                    img: 'assets/img/github.png'
+                    img: 'github.png'
                 },
                 {
                     site: 'LinkedIn',
                     link: 'https://www.linkedin.com/in/logiordano/',
-                    img: 'assets/img/linkedin.png'
+                    img: 'linkedin.png'
                 }
             ]
         }

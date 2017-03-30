@@ -2,10 +2,11 @@
 <div class="sub-menu">
 <ul class="tabs">
   <li  v-for="(character,index) in characters" style="width:45%" @click="switchCharacter(character)" :key="character.id" :class="character.id==chosenCharacter ? 'active':'inactive' ">
-  <transition @enter="fadeInScale" appear ><img class="char-portrait":src="`../../../src/assets/img/${character.img.main}`" alt=""></transition>
+  <transition @enter="fadeInScale" appear ><img class="char-portrait":src="`/src/assets/img/${character.img.main}`" alt=""></transition>
 <div class="side-info">
-  <p>{{character.name}}</p>
+<div>  <p>{{character.name}}</p>
   <p>{{character.class}}</p></div>
+</div>
 </li>
 </ul>
   <div class="row skills-box" >
@@ -15,7 +16,7 @@
                 <transition-group @enter="fadeEnterUp"  appear>
                   <div class="" class="skill-row col-xs-12 col-md-6" v-for="(skill,index) in character.skills" @click="toggleSkillModal(skill)" :key="index" :data-index="index">
                     <div class="col-sm-6 col-xs-6">
-                      <p><img class="skill-icon" :src="`../../../src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
+                      <p><img class="skill-icon" :src="`/src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
                     </div>
                     <div class="col-sm-6 col-xs-6">
                       <skill-stars :skill="skill"></skill-stars>
@@ -110,7 +111,11 @@ p{}
 .char-portrait {
     height: 80px;
 }
-
+.side-info{
+  display:flex;
+  align-items:center;
+  /*justify-content:center;*/
+}
 .skill-row {
     margin: 10px 0 10px;
     min-height: 50px;

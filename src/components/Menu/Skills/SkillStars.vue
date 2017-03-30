@@ -1,7 +1,7 @@
 <template lang="html">
   <ul class="star">
     <transition-group @enter="fadeEnterNew" appear><li v-for="(star,index) in this.skill.lvl" :key="index" v-if="showStars">
-      <img :src="'../../../../src/assets/img/star.svg'" class="star"alt="">
+      <img :src="'/src/assets/img/star.svg'" class="star"alt="">
     </li></transition-group>
   </ul>
 </template>
@@ -41,7 +41,7 @@ export default {
 <style lang="css">
 .star{
   padding:0;
-  
+
 }
 .star li{
   list-style:none;

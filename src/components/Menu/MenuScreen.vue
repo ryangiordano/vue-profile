@@ -12,7 +12,7 @@
 @beforeLeave="test" @leave="test" @afterLeave="test" @leaveCanceled="test" :css="false" appear>  <side-bar></side-bar></transition>
 </div>
   <div class="col-sm-9 col-xs-12">
-    <transition @leave="scaleYLeave" @enter="scaleYEnter":css="false" appear mode="out-in"><router-view @pageLoad="stateChange" :characters="characters" ></router-view></transition>
+    <transition @leave="scaleYLeave" @enter="scaleYEnter":css="false" appear mode="out-in"><router-view @pageLoad="stateChange" :characters="characters"></router-view></transition>
   </div>
 </div>
 
