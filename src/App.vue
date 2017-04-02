@@ -1,5 +1,5 @@
 <template>
-<div style="position:relative">
+<div style="position:relative;background-image:url('/src/assets/img/background.jpg')" >
 
 <transition @leave="fadeLeave" @enter="fadeEnter":css="false" mode="out-in"><router-view></router-view></transition>
 

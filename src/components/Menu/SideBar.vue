@@ -4,7 +4,7 @@
     <router-link :to="{name:'skills'}" tag="li">Skills</router-link >
     <router-link :to="{name:'equipment'}" tag="li">Equipment</router-link >
 
-    <router-link :to="{name:'adventures'}" tag="li">Quests</router-link >
+    <router-link :to="{name:'adventures'}" tag="li">Quest Journal</router-link >
     <router-link :to="{name:'join-party'}" tag="li" >Invite to Party</router-link >
     <router-link to="/" tag="li" exact>Title Screen</router-link >
   </div>

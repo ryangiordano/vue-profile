@@ -1,5 +1,6 @@
 const state = {
-    characters: [{
+    characters: [
+      {
             name: "Ryan Giordano",
             class: "Web Developer",
             startDate: [2014, 6, 10, 0, 0],
@@ -165,10 +166,10 @@ const state = {
                 currentMP: 200,
                 maxMP: 200,
                 limit: 0,
-                design: 6,
-                backend: 15,
-                frontend: 12,
-                cha: 4
+                design: 13,
+                backend: 8,
+                frontend: 15,
+                grit: 20
             },
             links: [{
                     site: 'Github',
@@ -183,8 +184,8 @@ const state = {
             ]
         },
         {
-            name: "Zhejing Luo",
-            class: "Data Analyst",
+            name: "Lo Giordano",
+            class: "Analyst Consultant",
             startDate: [2012, 2, 10, 0, 0],
             weapon: "Python Blade",
 
@@ -228,7 +229,7 @@ const state = {
                     lvl: 3
                 },
             ],
-            about: "A lifelong and avid learner, Zhejing 'Lo' Luo is a datamancer who finds beauty in patterns and trends in complex systems. She creates enterprise-level applications to help analysts better spot trends in big data. Perpetually curious with an insatiable appetite for books, Lo can almost always be found with her fingertips to the keyboard.  When she isn't eyes-deep in code, she's enjoying a good movie or making some of the most delicious Sichuanese food you can imagine.",
+            about: "A lifelong and avid learner, Lo Giordano is a datamancer who finds beauty in patterns and trends in complex systems. She creates enterprise-level applications to help analysts better spot trends in big data. Perpetually curious with an insatiable appetite for books, Lo can almost always be found with her fingertips to the keyboard.  When she isn't eyes-deep in code, she's enjoying a good movie or making some of the most delicious Sichuanese food you can imagine.",
             blurb: "She's also kind of cute.",
             education: ['BA Pharmacy', 'BA Psychology', 'MS Complex System'],
             id: 1,
@@ -238,10 +239,10 @@ const state = {
                 currentMP: 200,
                 maxMP: 200,
                 limit: 0,
-                spd: 6,
-                str: 15,
-                sta: 12,
-                cha: 4
+                design: 6,
+                backend: 15,
+                frontend: 12,
+                grit: 20
             },
             links: [{
                     site: 'Github',

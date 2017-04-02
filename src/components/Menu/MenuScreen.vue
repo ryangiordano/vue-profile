@@ -1,5 +1,7 @@
 <template lang="html">
+<div>
 <section class="menu">
+
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -23,7 +25,8 @@
 <transition @enter="fadeEnter" @leave="fadeLeave">
   <mail-modal :show="showMailModal" v-if="showMailModal" @toggleMailModal="showMailModal=false" ></mail-modal>
 </transition>
-</section>
+
+</section></div>
 
 </template>
 
@@ -97,8 +100,23 @@ section.menu {
     height: 100vh;
     width: 100vw;
     position: absolute;
+    background-size:cover;
+    background-attachment:fixed;
+    overflow-y:scroll;
 }
 
+.overlay{
+  height:100%;
+  width:100%;
+  background-color:rgba('0,0,0,.5');
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:1;
+}
+.container{
+  z-index:2;
+}
 .sub-menu {
     overflow: hidden;
     /*background-color: rgba(40, 100, 201, 0.71);*/

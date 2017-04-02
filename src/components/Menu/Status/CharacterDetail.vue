@@ -88,12 +88,6 @@ export default {
         })
     },
     computed: {
-        character() {
-            return this.$store.getters.character(this.$route.params.id);
-        },
-        imgLoc() {
-            return `../../src/${this.character.img.alt}`
-        },
         yearsOfExperience() {
             let startTime = new Date(...this.character.startDate);
             let currentTime = new Date();
