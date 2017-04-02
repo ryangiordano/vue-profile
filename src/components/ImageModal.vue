@@ -3,20 +3,9 @@
   <div class="overlay" @click="closeModal">
   <transition @enter="scaleXEnter" @leave="scaleYLeave">
   <div class="panel"  ref="panel" v-if="showPanel" @click.stop >
-        <div class="panel-heading">
-<div class="row">
-  <div class="col-md-6">
-    <p><img :src="`/src/assets/img/${skill.img}`" alt="" height="30px" style="padding-right:15px">{{skill.name}} </p>
+  <div class="panel-body">
+      <img :src="`/src/assets/img/${image.file}`" alt="" class="image" style="padding-right:15px">
   </div>
-  <div class="col-md-6">
-    <span v-for="(type,index) in skill.type">{{type}}{{index+1 >= skill.type.length ?'' : ','}} </span>
-
-  </div>
-</div>
-        </div>
-        <div class="panel-body">
-        <p>{{skill.about}}</p>
-        </div>
     </div>
     </transition>
   </div>
@@ -26,7 +15,7 @@
 <script>
 import {eventBus} from '../main';
 export default {
-props:['skill','showModal','show'],
+props:['image','showModal','show'],
 data:function(){
   return{
     showPanel:false
@@ -42,7 +31,7 @@ destroyed(){
 },
 methods:{
   closeModal(){
-    this.$emit('toggleSkillModal');
+    this.$emit('toggleImageModal');
   },
   scaleXEnter(el,done){
     let tl = new TimelineMax;
@@ -59,7 +48,6 @@ methods:{
     })
   },
   fadeEnter(el,done){
-    console.log("???");
     let tl = new TimelineMax;
     tl.from(el,.2,{
       opacity:0,
@@ -101,6 +89,9 @@ ready:{
   justify-content:center;
   background-color:rgba(0,0,0,.5)
 }
+.image{
+  width:50vw;
+}
 .panel {
     overflow: hidden;
     background: rgba(107,194,101,0.9);
@@ -115,27 +106,11 @@ ready:{
     border-radius: 5px;
     border: 3px solid #f4f4f4;
     margin-bottom: 20px;
-    max-width:550px;
-    max-height:400px;
-}
-.panel p {
-    color: #f4f4f4;
-    font-family: 'VT323', monospace;
-    font-size: 25px;
-    transition: .3s ease all;
-}
-.panel span{
-  font-size:18px;
-  color: #f4f4f4;
-  font-family: 'VT323', monospace;
-  transition: .3s ease all;
-}
-.panel-heading{
-  border-bottom:2px solid #f4f4f4;
+    /*max-width:550px;
+    max-height:400px;*/
 }
 .panel-body{
-  max-height:250px;
-  overflow-y:scroll;
+  /*max-height:250px;*/
 }
 .panel-body::-webkit-scrollbar              { /* 1 */  background-color:transparent}
 .panel-body::-webkit-scrollbar-button       { /* 2 */ }

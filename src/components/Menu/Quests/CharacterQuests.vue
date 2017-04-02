@@ -73,7 +73,9 @@ export default {
   },
   computed:{
     quests() {
-        return this.$store.getters.quests;
+      let quests = this.$store.getters.quests;
+      quests.reverse();
+        return quests;
     },
     character(){
       let characters = this.$store.getters.characters;
@@ -143,6 +145,9 @@ export default {
 
 .quest-name {
     flex-basis: 65%;
+}
+ul{
+  padding:0;
 }
 .skills li {
     text-decoration: none;

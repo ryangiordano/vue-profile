@@ -19,13 +19,18 @@
 </div>
 
 </div>
+<!-- Image modal for Skills -->
 <transition @enter="fadeEnter" @leave="fadeLeave">
   <skill-modal :skill="skill" :show="showSkillModal" v-if="showSkillModal" @toggleSkillModal="showSkillModal=false" ></skill-modal>
 </transition>
+<!-- Image modal for Mail -->
 <transition @enter="fadeEnter" @leave="fadeLeave">
   <mail-modal :show="showMailModal" v-if="showMailModal" @toggleMailModal="showMailModal=false" ></mail-modal>
 </transition>
-
+<!-- Image modal for Quests -->
+<transition @enter="fadeEnter" @leave="fadeLeave">
+  <image-modal :show="showImageModal" v-if="showImageModal" @toggleImageModal="showImageModal=false" :image="image" ></image-modal>
+</transition>
 </section></div>
 
 </template>
@@ -36,6 +41,7 @@ import {
 } from '../../main';
 import SkillModal from '../SkillModal.vue';
 import MailModal from '../MailModal.vue';
+import ImageModal from '../ImageModal.vue';
 import {
     AnimationMixin
 } from '../../mixins/Animations';
@@ -49,7 +55,9 @@ export default {
             stateText: '',
             showSkillModal: false,
             showMailModal: false,
+            showImageModal: false,
             skill: null,
+            image:null
 
         }
     },
@@ -63,7 +71,8 @@ export default {
         sideBar: SideBar,
         stateBar: StateBar,
         skillModal: SkillModal,
-        mailModal:MailModal
+        mailModal:MailModal,
+        imageModal:ImageModal
     },
     methods: {
         stateChange(e) {
@@ -89,6 +98,15 @@ export default {
                 }
             })
         });
+        eventBus.$on('toggleImageModal', (image) => {
+            this.showImageModal = !this.showImageModal;
+            this.image = image;
+            document.addEventListener("keydown", (e) => {
+                if (this.showImageModal && e.keyCode == 27) {
+                    this.showImageModal = false;
+                }
+            })
+        });
     },
 }
 </script>
@@ -103,6 +121,7 @@ section.menu {
     background-size:cover;
     background-attachment:fixed;
     overflow-y:scroll;
+    /*background-image:url('/src/assets/img/backgr.png')*/
 }
 
 .overlay{

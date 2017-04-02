@@ -185,7 +185,7 @@ const state = {
         },
         {
             name: "Lo Giordano",
-            class: "Analyst Consultant",
+            class: "Analytics Consultant",
             startDate: [2012, 2, 10, 0, 0],
             weapon: "Python Blade",
 

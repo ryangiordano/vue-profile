@@ -63,7 +63,9 @@ export default {
           return this.$route.params.charId;
         },
         quests() {
-            return this.$store.getters.quests;
+          let quests = this.$store.getters.quests;
+          quests.reverse();
+            return quests;
         }
     },
 
