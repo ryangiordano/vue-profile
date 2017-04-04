@@ -2,8 +2,8 @@
 <div class="sub-menu">
   <div class="join-party">
     <ul>
-      <li v-for="character in characters">{{character.name}}</li>
-      <li class="mail" @click="openMail">Send Invite Request</li>
+      <li v-for="character in characters" @click="openMail(character)">{{character.name}}</li>
+
     </ul>
   </div>
 
@@ -18,8 +18,8 @@ export default {
     this.$emit('pageLoad',{stateText:'If you\'re interested in teaming up together, drop me a line.'})
   },
   methods:{
-    openMail(){
-      eventBus.$emit('toggleMailModal');
+    openMail(e){
+      eventBus.$emit('toggleMailModal',e);
 
     }
   }
@@ -40,6 +40,7 @@ export default {
  border:3px solid #f4f4f4;
  border-radius:5px;
  margin:10px 0;
+ cursor:pointer;
 
 
 }
