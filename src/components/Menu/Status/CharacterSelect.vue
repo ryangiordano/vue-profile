@@ -3,12 +3,20 @@
   <transition @enter="fadeInScale" appear><div class="portrait col-xs-2">
 <img :src="`../../../src/assets/img/${character.img.main}`" alt="" class="char-portrait">
   </div></transition>
-  <div class="status col-xs-7">
+  <div class="status ">
     <h3>{{character.name}}</h3>
     <h4>LVL {{yearsOfExperience}} {{character.class}}</h4>
-    <h4>Wpn: {{character.weapon}}</h4>
+    <!-- <h4>Wpn: {{character.weapon}}</h4> -->
+    <a :href="`mailto:${character.contact.email}?Subject=Hail, ${character.name}`"@click.stop><h4 style="margin:0; " :alt="`Email ${character.name.split(' ')[0]}`">{{character.contact.email}}</h4></a>
+    <h4 style="margin:0;">{{character.contact.phone}}</h4>
   </div>
-  <div class="exp col-xs-3" >
+  <div class="links">
+    <ul>
+      <li v-for="link in character.links" class="link"@click.stop><a :href="link.link"><img :src="`/src/assets/img/${link.img}`" :alt="link.site"></a></li>
+    </ul>
+
+  </div>
+  <div class="exp" >
       <div class="exp-bar">
         <div class="exp-fill" :style="dayOfTheYear">
           <!-- TODO: write script to tie xp bar with years/days -->
@@ -86,6 +94,13 @@ export default {
 box-shadow: 0px 2px 10px 4px rgba(255,255,255,1);
 transition:all .5s ease;
 }
+.status{
+  flex-basis:30%;
+}
+.links{
+  flex-basis:30%;
+  align-self:center;
+}
 h3{
   font-family: 'VT323', monospace;
   color: #f2f2f2;
@@ -134,5 +149,15 @@ background: -ms-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1)
 background: linear-gradient(to right, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645', GradientType=1 );
 transition:.5s ease all .2s;
+}
+
+li.link{
+    list-style:none;
+    display:inline;
+    margin:0 5px;
+
+}
+.link img{
+  height:30px;
 }
 </style>

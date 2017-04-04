@@ -6,22 +6,24 @@
       </div>
         <div class="col-xs-4">
           <h3>{{character.name}}</h3>
-          <p>LVL {{yearsOfExperience}} {{character.class}}</p>
+          <p style="font-size:20px">LVL {{yearsOfExperience}} {{character.class}}</p>
+          <a :href="`mailto:${character.contact.email}?Subject=Hail, ${character.name}`"@click.stop><h4 style="margin-bottom:10px; " :alt="`Email ${character.name.split(' ')[0]}`">{{character.contact.email}}</h4></a>
+          <h4 style="margin-bottom:10px;">{{character.contact.phone}}</h4>
           <ul>
             <li v-for="link in character.links"><a :href="link.link"><img :src="'/src/assets/img/'+link.img" /></a></li>
           </ul>
 
         </div>
         <div class="col-xs-4">
-          <h4>STR: {{character.stats.str}}</h4>
-          <h4>STA: {{character.stats.sta}}</h4>
-          <h4>SPD: {{character.stats.spd}}</h4>
-          <h4>CHA: {{character.stats.cha}}</h4>
+          <h4>FRNT: {{character.stats.backend}}</h4>
+          <h4>BCK: {{character.stats.frontend}}</h4>
+          <h4>DES: {{character.stats.design}}</h4>
+          <h4>GRIT: {{character.stats.grit}}</h4>
           <div class="row">
             <div class="col-xs-1">
               <p class="bar-label">HP</p>
             </div>
-            <div class="col-xs-10">
+            <div class="col-xs-8">
               <div class="hp">
                   <div></div>
               </div>
@@ -31,7 +33,7 @@
             <div class="col-xs-1">
               <p class="bar-label">MP</p>
             </div>
-            <div class="col-xs-10">
+            <div class="col-xs-8">
               <div class="mp">
                   <div></div>
               </div>
@@ -60,6 +62,9 @@
           <div class="details">
 
               <p>{{character.about}}</p>
+          </div>
+          <div class="contact">
+            <button class="btn btn-default" @click="openMail(character)">Contact {{character.name.split(' ')[0]}}</button>
           </div>
         </div>
       </div>
@@ -141,8 +146,8 @@ li{
 
 }
 li img{
-  height:40px;
-  margin:10px;
+  height:25px;
+  margin:5px;
 }
 .bar {
     position: relative;
@@ -151,7 +156,19 @@ li img{
 .bar-label{
   margin:0;
 }
-
+.btn{
+  border:2px solid #f4f4f4;
+  border-radius:5px;
+  background-color:transparent;
+  width: 100%;
+  transition:background-color .3s ease;
+  color:#f4f4f4;
+}
+.btn:hover{
+  background-color:#f4f4f4;
+  transition:background-color .3s ease;
+  color: #656565;
+}
 .hp,
 .mp {
     height: 5px;

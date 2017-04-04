@@ -156,6 +156,11 @@ const state = {
                 main: "portrait.jpg",
                 alt: "ryan-alt.jpg"
             },
+            contact:{
+              email:'rgiorda1@gmail.com',
+              phone:'404-234-3366',
+
+            },
             about: "A web developer and designer with a passion for making new and intesting ways for people to interact with data.  Proficient in the arts of HTML, CSS, and JavaScript yet still finding something new to learn every day.  Has knowledge of several frameworks for making applications, such as: AngularJS, Angular 2, Vue JS, and Laravel. A believer in constant and never-ending improvement, he splits his time between the computer and the gym.",
             id: 0,
             blurb: 'Kind of an okay guy.',
@@ -180,6 +185,11 @@ const state = {
                     site: 'LinkedIn',
                     link: 'https://www.linkedin.com/in/ryan-giordano-a9b11488/',
                     img: 'linkedin.png'
+                },
+                {
+                  site:'Resume',
+                  link:'https://s3.us-east-2.amazonaws.com/rgiordano.com/src/resume/Resume2017.pdf',
+                  img:'document.png'
                 }
             ]
         },
@@ -192,6 +202,11 @@ const state = {
             img: {
                 main: "lo.jpg",
                 alt: "lo-alt.jpg"
+            },
+            contact:{
+              email:'loxgio@gmail.com',
+              phone:'404-234-3366',
+
             },
             skills: [{
                     name: 'Python',
