@@ -99,7 +99,6 @@ export default {
             })
         },
         fadeLeave(el,done){
-          console.log("???");
           let tl = new TimelineMax;
           tl.to(el,.3,{
             opacity:0,

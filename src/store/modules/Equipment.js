@@ -3,9 +3,15 @@ const state = {
       {name:'PhotoShop',about:'About PhotoShop',id:2,img:'css-icon.svg',lvl:4},
       {name:'Illustrator',about:'About Illustrator',id:2,img:'css-icon.svg',lvl:4},
       {name:'Filemaker',about:'About Filemaker',id:1,img:'html-icon.svg',lvl:5},
-      {name:'Atom',about:'About Filemaker',id:1,img:'html-icon.svg',lvl:5},
-      {name:'Github',about:'About Filemaker',id:1,img:'html-icon.svg',lvl:5},
-      {name:'Atom',about:'About Filemaker',id:1,img:'html-icon.svg',lvl:5},
+      {name:'Atom',about:'About atom',id:1,img:'html-icon.svg',lvl:5},
+      {name:'Github',about:'About Github',id:1,img:'html-icon.svg',lvl:5},
+      {name:'npm',about:'About npm',id:1,img:'html-icon.svg',lvl:5},
+      {name:'Windows',about:'About npm',id:1,img:'html-icon.svg',lvl:5},
+      {name:'OSX',about:'About osx',id:1,img:'html-icon.svg',lvl:5},
+      {name:'Windows',about:'About npm',id:1,img:'html-icon.svg',lvl:5},
+      {name:'Seltzer Water',about:'About seltzer',id:1,img:'html-icon.svg',lvl:5},
+      {name:'Mechanical Keyboard',about:'about mech keyboard',id:1,img:'html-icon.svg',lvl:5},
+      {name:'Mechanical Keyboard',about:'about mech keyboard',id:1,img:'html-icon.svg',lvl:5},
     ],
 }
 const getters = {

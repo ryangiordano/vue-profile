@@ -38,72 +38,74 @@
 
 <script>
 export default {
-  methods:{
-    navigateToQuest(charId,id){
-    return this.$router.push({path:`/adventures/${charId}/${id}`})
+    methods: {
+        navigateToQuest(charId, id) {
+            return this.$router.push({
+                path: `/adventures/${charId}/${id}`
+            })
+        },
+        fadeEnterUp(el, done) {
+            let tl = new TimelineMax;
+            let delay = el.dataset.index * .05;
+            tl.from(el, 1, {
+                opacity: 0,
+                delay: delay,
+                y: 20,
+                ease: Elastic.easeOut.config(1, 0.3),
+                onComplete: done
+            })
+        },
+        fadeInScale(el, done) {
+            let tl = new TimelineMax;
+            tl.from(el, .5, {
+                scale: .5,
+                opacity: 0,
+                delay: .2,
+                ease: Elastic.easeOut.config(1, 0.75),
+                onComplete: done
+            })
+        },
+        fadeLeave(el, done) {
+            let tl = new TimelineMax;
+            tl.to(el, .03, {
+                opacity: 0,
+                onComplete: done
+            })
+        },
     },
-    fadeEnterUp(el, done) {
-        let tl = new TimelineMax;
-        let delay = el.dataset.index * .05;
-        tl.from(el, 1, {
-            opacity: 0,
-            delay: delay,
-            y: 20,
-            ease: Elastic.easeOut.config(1, 0.3),
-            onComplete: done
+    computed: {
+        quests() {
+            let quests = this.$store.getters.quests;
+            // quests.reverse();
+            return quests;
+        },
+        character() {
+            let characters = this.$store.getters.characters;
+            return characters.find(character => character.id == this.$route.params.charId)
+        }
+    },
+    mounted() {
+        let $ = function(el) {
+            return document.querySelectorAll(el);
+        }
+        let delay = .5;
+        let marks = $('.mark');
+        let marksArray = Array.from(marks);
+        marksArray.map(mark => {
+            delay += .1;
+            TweenMax.set(mark, {
+                scale: 1.5,
+                transformOrigin: 'center center',
+            })
+            TweenMax.from(mark, 1, {
+                opacity: 0,
+                ease: Elastic.easeOut.config(1, 0.75),
+                transformOrigin: 'center center',
+                scale: 3,
+                delay: delay
+            })
         })
     },
-    fadeInScale(el, done) {
-        let tl = new TimelineMax;
-        tl.from(el, .5, {
-            scale: .5,
-            opacity: 0,
-            delay: .2,
-            ease: Elastic.easeOut.config(1, 0.75),
-            onComplete: done
-        })
-    },
-    fadeLeave(el,done){
-      let tl = new TimelineMax;
-      tl.to(el,.03,{
-        opacity:0,
-        onComplete:done
-      })
-    },
-  },
-  computed:{
-    quests() {
-      let quests = this.$store.getters.quests;
-      quests.reverse();
-        return quests;
-    },
-    character(){
-      let characters = this.$store.getters.characters;
-      return characters.find(character=>character.id == this.$route.params.charId)
-    }
-  },
-  mounted() {
-      let $ = function(el) {
-          return document.querySelectorAll(el);
-      }
-      let delay = .5;
-      let marks = $('.mark');
-      let marksArray = Array.from(marks);
-      marksArray.map(mark => {
-          delay += .1;
-          TweenMax.set(mark, {
-              scale: 1.5,
-              transformOrigin: 'center center',
-          })
-          TweenMax.from(mark, 1, {
-              opacity: 0,
-              ease: Elastic.easeOut.config(1, 0.75),
-              transformOrigin: 'center center',
-              scale: 3,
-              delay: delay
-          })
-      })
-  },
 }
 </script>
 
@@ -146,9 +148,11 @@ export default {
 .quest-name {
     flex-basis: 65%;
 }
-ul{
-  padding:0;
+
+ul {
+    padding: 0;
 }
+
 .skills li {
     text-decoration: none;
     display: inline;

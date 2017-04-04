@@ -2,6 +2,7 @@
 <div class="sub-menu">
   <div class="join-party">
     <ul>
+
       <li class="party-li" v-for="character in characters" @click="openMail(character)">
         <div class="character-box" >
 
@@ -24,6 +25,7 @@
 
       </li>
       <!-- <li class="mail" @click="openMail">Send Invite Request</li> -->
+
     </ul>
   </div>
 
@@ -38,8 +40,8 @@ export default {
     this.$emit('pageLoad',{stateText:'If you\'re interested in teaming up together, drop me a line.'})
   },
   methods:{
-    openMail(){
-      eventBus.$emit('toggleMailModal');
+    openMail(e){
+      eventBus.$emit('toggleMailModal',e);
 
     }
   }
@@ -84,6 +86,7 @@ img.portrait{
  ul{
   padding:0;
 }
+
 .party-li{
   list-style:none;
   cursor:pointer;
@@ -93,6 +96,7 @@ img.portrait{
 -moz-box-shadow: 0px 2px 10px 4px rgba(255,255,255,1);
 box-shadow: 0px 2px 10px 4px rgba(255,255,255,1);
 transition:all .5s ease;
+
 }
 @-webkit-keyframes white {
  from {  -webkit-box-shadow: 0 0 9px #fff; }
