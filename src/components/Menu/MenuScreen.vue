@@ -193,13 +193,13 @@ export default {
     },
     mounted() {
         //background animations
-        this.placeCloud(this.animateCloud);
-        setTimeout(() => {
-            this.placeCloud(this.animateCloud)
-        }, 10000);
-        setTimeout(() => {
-            this.placeCloud(this.animateCloud)
-        }, 15000);
+        // this.placeCloud(this.animateCloud);
+        // setTimeout(() => {
+        //     this.placeCloud(this.animateCloud)
+        // }, 10000);
+        // setTimeout(() => {
+        //     this.placeCloud(this.animateCloud)
+        // }, 15000);
 
 
         setTimeout(() => {
