@@ -1,22 +1,24 @@
 <template lang="html">
 <div class="inner-menu row" style="cursor:pointer">
-  <transition @enter="fadeInScale" appear><div class="portrait col-xs-2">
-<img :src="`../../../src/assets/img/${character.img.main}`" alt="" class="char-portrait">
-  </div></transition>
-  <div class="status ">
+  <transition @enter="fadeInScale" appear>
+    <div class="portrait col-md-3 col-sm-4 col-xs-12">
+      <img :src="`../../../src/assets/img/${character.img.main}`" alt="" class="char-portrait">
+  </div>
+</transition>
+  <div class=" col-xs-12 col-sm-6 col-md-4">
     <h3>{{character.name}}</h3>
     <h4>LVL {{yearsOfExperience}} {{character.class}}</h4>
     <!-- <h4>Wpn: {{character.weapon}}</h4> -->
     <a :href="`mailto:${character.contact.email}?Subject=Hail, ${character.name}`"@click.stop><h4 style="margin:0; " :alt="`Email ${character.name.split(' ')[0]}`">{{character.contact.email}}</h4></a>
     <h4 style="margin:0;">{{character.contact.phone}}</h4>
   </div>
-  <div class="links">
-    <ul>
+  <div class="col-xs-6  col-sm-1 col-md-4 links hidden-xs">
+    <ul style="padding:0">
       <li v-for="link in character.links" class="link"@click.stop><a :href="link.link"><img :src="`/src/assets/img/${link.img}`" :alt="link.site"></a></li>
     </ul>
 
   </div>
-  <div class="exp" >
+  <div class="col-xs-6 col-md-4 exp hidden-sm hidden-xs" >
       <div class="exp-bar">
         <div class="exp-fill" :style="dayOfTheYear">
           <!-- TODO: write script to tie xp bar with years/days -->
@@ -24,10 +26,6 @@
         <div class="sub-text">
           To Next Lvl: {{day}}/365
         </div>
-      </div>
-
-      <div class="">
-
       </div>
   </div>
 </div>
@@ -84,7 +82,7 @@ export default {
   margin:5px 5px 10px;
   border-radius:5px;
   border:3px solid #f4f4f4;
-  display:flex;
+  /*display:flex;*/
   transition:all 1s ease;
   top:0;
       background-color:rgba(0,0,0,.2);
@@ -95,12 +93,15 @@ export default {
 box-shadow: 0px 2px 10px 4px rgba(255,255,255,1);
 transition:all .5s ease;
 }
+.exp{
+  margin-bottom:10px;
+}
 .status{
   flex-basis:30%;
 }
 .links{
-  flex-basis:30%;
-  align-self:center;
+  margin-top:15px;
+  align-self:flex-start;
 }
 h3{
   font-family: 'VT323', monospace;
@@ -119,6 +120,12 @@ h4{
   -webkit-box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
   -moz-box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
   box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
+  align-self:center;
+}
+@media (max-width: 670px) {
+  .inner-menu{
+    text-align:center;
+  }
 }
 .exp-bar{
   -webkit-box-shadow: inset 0px 17px 15px -14px rgba(0,0,0,0.36);
@@ -126,7 +133,7 @@ h4{
 box-shadow: inset 0px 17px 15px -14px rgba(0,0,0,0.36);
   border:2px solid #ededed;
   margin:10px;
-  height:30px;
+  height:15px;
   background: rgba(199,199,199,1);
 background: -moz-linear-gradient(top, rgba(199,199,199,1) 0%, rgba(219,219,219,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(199,199,199,1)), color-stop(100%, rgba(219,219,219,1)));
@@ -159,6 +166,7 @@ li.link{
 
 }
 .link img{
+  margin-top:5px;
   height:30px;
 }
 </style>

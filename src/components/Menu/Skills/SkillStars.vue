@@ -5,7 +5,6 @@
     </li></transition-group>
   </ul>
 </template>
-<!-- '../../../../src/assets/img/star.svg' -->
 <script>
 import {AnimationMixin} from '../../../mixins/Animations';
 export default {
@@ -47,13 +46,15 @@ export default {
   list-style:none;
   display:inline;
   margin:0 5px;
+  white-space:nowrap;
 }
 .star img{
   height:20px;
   transition:all .3s ease;
 }
-.star img:hover{
-  height:25px;
-  transition:all .3s ease;
+@media (max-width:500px) {
+  .star img{
+    height:15px;
+  }
 }
 </style>
