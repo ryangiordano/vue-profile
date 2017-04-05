@@ -189,7 +189,7 @@ const state = {
                 {
                   site:'Resume',
                   link:'https://s3.us-east-2.amazonaws.com/rgiordano.com/src/resume/Resume2017.pdf',
-                  img:'document.png'
+                  img:'resume.svg'
                 }
             ]
         },
@@ -210,39 +210,69 @@ const state = {
             },
             skills: [{
                     name: 'Python',
-                    about: 'About Python',
+                    about: 'Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together.',
                     id: 4,
-                    img: 'py-icon.svg',
+                    img: 'python.png',
                     lvl: 5
                 },
                 {
                     name: 'JavaScript',
-                    about: 'About JavaScript',
+                    about: 'JavaScript is a high-level, dynamic, untyped, and interpreted programming language. It has been standardized in the ECMAScript language specification.  Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production; the majority of websites employ it, and all modern Web browsers support it without the need for plug-ins. JavaScript is prototype-based with first-class functions, making it a multi-paradigm language, supporting object-oriented, imperative, and functional programming styles.',
                     id: 0,
-                    img: 'js-icon.svg',
+                    img: 'js.png',
                     lvl: 4
                 },
                 {
-                    name: 'HTML',
-                    about: 'About HTML',
+                    name: 'SQL',
+                    type: ['back-end', 'database'],
+                    about: 'SQL is used to communicate with a database. It is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database.',
+                    id: 0,
+                    img: 'sql.png',
+                    lvl: 1
+                },
+                {
+                    name: 'Qlikview',
+                    about: 'QlikView is a business discovery platform that provides self-service BI for all business users in organizations. With QlikView you can analyze data and use your data discoveries to support decision making.',
                     id: 1,
-                    img: 'html-icon.svg',
+                    img: 'qlikview.png',
                     lvl: 5
                 },
                 {
-                    name: 'CSS',
-                    about: 'About CSS',
+                    name: 'SAS',
+                    about: 'SAS is an integrated software suite for advanced analytics, business intelligence, data management, and predictive analytics. You can use SAS software through both a graphical interface and the SAS programming language, or Base SAS.',
                     id: 2,
-                    img: 'css-icon.svg',
+                    img: 'sas.png',
                     lvl: 4
                 },
                 {
-                    name: 'PHP',
-                    about: 'About PHP',
+                    name: 'Tableau',
+                    about: 'Tableau is a business intelligence (BI) tool that can help you create beautiful and visually-appealing reports, charts, graphs and dashboards using your data. These reports are interactive and can easily be shared with anyone.',
                     id: 3,
-                    img: 'php-icon.svg',
+                    img: 'tableau.png',
                     lvl: 3
                 },
+                {
+                    name: 'Java',
+                    about: 'Java is a programming language and computing platform first released by Sun Microsystems in 1995. There are lots of applications and websites that will not work unless you have Java installed, and more are created every day. Java is fast, secure, and reliable.',
+                    id: 3,
+                    img: 'java.png',
+                    lvl: 3
+                },
+                {
+                    name: 'Hadoop',
+                    about: 'Hadoop is an open source, Java-based programming framework that supports the processing and storage of extremely large data sets in a distributed computing environment. It is part of the Apache project sponsored by the Apache Software Foundation.',
+                    id: 3,
+                    img: 'hadoop.png',
+                    lvl: 3
+                },
+                {
+                    name: 'R',
+                    about: 'R is an open source programming language and software environment for statistical computing and graphics that is supported by the R Foundation for Statistical Computing.',
+                    id: 3,
+                    img: 'r.svg',
+                    lvl: 3
+                },
+
             ],
             about: "A lifelong and avid learner, Lo Giordano is a datamancer who finds beauty in patterns and trends in complex systems. She creates enterprise-level applications to help analysts better spot trends in big data. Perpetually curious with an insatiable appetite for books, Lo can almost always be found with her fingertips to the keyboard.  When she isn't eyes-deep in code, she's enjoying a good movie or making some of the most delicious Sichuanese food you can imagine.",
             blurb: "She's also kind of cute.",

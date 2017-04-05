@@ -87,6 +87,7 @@ export default {
   display:flex;
   transition:all 1s ease;
   top:0;
+      background-color:rgba(0,0,0,.2);
 }
 .inner-menu:hover{
   -webkit-box-shadow: 0px 2px 10px 4px rgba(255,255,255,1);
@@ -114,7 +115,7 @@ h4{
 .char-portrait{
   border:2px solid #ededed;
   height:100px;
-  margin:10px;
+  margin:10px 20px 10px 0;
   -webkit-box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
   -moz-box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
   box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);

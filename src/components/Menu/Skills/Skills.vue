@@ -107,10 +107,18 @@ export default {
 </script>
 
 <style scoped>
-p{}
+.char-portrait{
+  border:2px solid #ededed;
+  height:100px;
+  margin:10px;
+  -webkit-box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
+  box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.36);
+}
 .char-portrait {
     height: 80px;
 }
+
 .side-info{
   display:flex;
   align-items:center;
@@ -143,9 +151,16 @@ p{}
 }
 
 .skills-box {
-    border-top: 3px solid #f4f4f4;
-}
+    background-color:rgba(0,0,0,.3);
+    padding:15px;
+    max-height:5000px;
+    border-radius:5px;
+    -webkit-box-shadow: inset 0px 0px 35px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 0px 0px 35px -5px rgba(0,0,0,0.75);
+box-shadow: inset 0px 0px 35px -5px rgba(0,0,0,0.75);
+transition:max-height 1s ease;
 
+}
 .tabs {
     margin: 0;
     padding: 0;

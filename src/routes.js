@@ -52,6 +52,11 @@ const QuestDetail = resolve => {
     })
 };
 
+const CityView = resolve => {
+    require.ensure(['./components/CityView.vue'], () => {
+        resolve(require('./components/CityView.vue'));
+    })
+};
 
 // import MenuScreen from './components/Menu/MenuScreen.vue';
 // import Status from './components/Menu/Status/Status.vue';
@@ -66,6 +71,11 @@ export const routes = [{
         component: Home,
         name: 'Home'
     },
+    {
+            path: '/city-view',
+            component: CityView,
+            name: 'city-view'
+        },
     {
         path: '/main-menu',
         component: MenuScreen,

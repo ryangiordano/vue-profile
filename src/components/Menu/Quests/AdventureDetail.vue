@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="quest-details">
-    <div class="reward">
+    <!-- <div class="reward">
       <div class="" v-for="skillup in quest.skills">
         <p class="skill-up">{{skillup.name}} + {{skillup.xp}}</p>
       </div>
-    </div>
+    </div> -->
     <div class="body">
       <h3 class="name">{{quest.name}}</h3>
         <div class="links">
@@ -75,17 +75,17 @@ export default {
       y:10
     },.1)
     //animateskillups
-    let tl2 = new TimelineMax;
-    tl2.staggerFrom(skillup,.5,{
-      y:50,
-      delay:1,
-      opacity:0
-    },1,'init')
-    .staggerTo(skillup,.5,{
-      opacity:0,
-      delay:2,
-      y:-10
-    },1,'init')
+    // let tl2 = new TimelineMax;
+    // tl2.staggerFrom(skillup,.5,{
+    //   y:50,
+    //   delay:1,
+    //   opacity:0
+    // },1,'init')
+    // .staggerTo(skillup,.5,{
+    //   opacity:0,
+    //   delay:2,
+    //   y:-10
+    // },1,'init')
   }
 }
 </script>

@@ -251,24 +251,24 @@ const state = {
             }],
             charId: 0
         },
-        {
-            name: "Pharmacy App",
-            complete: true,
-            id: 7,
-            copy: "Made a kickass pharmacy app using sass and stuff.  I don't know the specifics but apparently it was pretty badass.",
-            skills: [{
-                name: 'sass',
-                img: 'js.png',
-                xp: 5,
-                type: 0
-            }, {
-                name: 'clickview',
-                img: 'jquery.png',
-                xp: 5,
-                type: 0
-            }],
-            charId: 1
-        },
+        // {
+        //     name: "Pharmacy App",
+        //     complete: true,
+        //     id: 7,
+        //     copy: "Made a kickass pharmacy app using sass and stuff.  I don't know the specifics but apparently it was pretty badass.",
+        //     skills: [{
+        //         name: 'sass',
+        //         img: 'js.png',
+        //         xp: 5,
+        //         type: 0
+        //     }, {
+        //         name: 'clickview',
+        //         img: 'jquery.png',
+        //         xp: 5,
+        //         type: 0
+        //     }],
+        //     charId: 1
+        // },
     ],
 }
 const getters = {

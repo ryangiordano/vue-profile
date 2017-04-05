@@ -136,6 +136,8 @@ export default {
     cursor: pointer;
     align-items: center;
     transition: -webkit-box-shadow .5s ease;
+    background-color:rgba(0,0,0,.2);
+
 }
 
 .quest-row:hover {
