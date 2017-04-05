@@ -2,7 +2,7 @@
   <section >
 
     <div class="splash"v-on:keyup="startPressed">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          width="590.124px" height="314.815px" viewBox="0 0 590.124 314.815" enable-background="new 0 0 590.124 314.815"
          xml:space="preserve">
       <g id="giordano">
@@ -376,6 +376,11 @@ a:hover{
   text-decoration:none;
   border-bottom:1px solid white;
     transition: all .3s ease;
+}
+@media (max-width:500px) {
+  .splash svg{
+    height:150px;
+  }
 }
 
 @keyframes fadeInOut {

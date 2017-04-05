@@ -1,8 +1,9 @@
 <template lang="html">
 <div class="sub-menu">
 <p>Select a character to view their stats.</p>
-    <transition-group @enter="fadeInUp"><character-select @click.native="viewDetails(character)" v-for="(character,index) in characters":key="index" :character="character" ></character-select></transition-group>
-    <transition @enter="scaleYEnter"><character-detail :name="selectedCharacter" v-if="selectedCharacter" :character="selectedCharacter"></character-detail></transition>
+    <transition-group @enter="fadeInUp">
+      <character-select @click.native="viewDetails(character)" v-for="(character,index) in characters":key="index" :character="character" ></character-select></transition-group>
+    
 </div>
 </template>
 

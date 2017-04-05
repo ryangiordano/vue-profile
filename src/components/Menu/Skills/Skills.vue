@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="sub-menu">
 <ul class="tabs">
-  <li  v-for="(character,index) in characters" style="width:45%" @click="switchCharacter(character)" :key="character.id" :class="character.id==chosenCharacter ? 'active':'inactive' ">
+  <li  v-for="(character,index) in characters"  @click="switchCharacter(character)" :key="character.id" :class="character.id==chosenCharacter ? 'active':'inactive' ">
   <transition @enter="fadeInScale" appear ><img class="char-portrait":src="`/src/assets/img/${character.img.main}`" alt=""></transition>
 <div class="side-info">
 <div>  <p>{{character.name}}</p>
@@ -14,11 +14,11 @@
         <transition @enter="fadeEnter" @leave="fadeLeave" mode="out-in" >
           <div class="character-skills" v-for="character in characters" v-if="chosenCharacter===character.id" :key="character.id" :ref="character.id">
                 <transition-group @enter="fadeEnterUp"  appear>
-                  <div class="" class="skill-row col-xs-12 col-md-6" v-for="(skill,index) in character.skills" @click="toggleSkillModal(skill)" :key="index" :data-index="index">
-                    <div class="col-sm-6 col-xs-6">
-                      <p><img class="skill-icon" :src="`/src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
+                  <div class="" class="skill-row" v-for="(skill,index) in character.skills" @click="toggleSkillModal(skill)" :key="index" :data-index="index">
+                    <div class="col-sm-6 col-xs-12">
+                      <p><img class="skill-icon img-responsive" :src="`/src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
                     </div>
-                    <div class="col-sm-6 col-xs-6">
+                    <div class="col-sm-6 col-xs-12">
                       <skill-stars :skill="skill"></skill-stars>
                     </div>
                 </div>
@@ -184,6 +184,7 @@ ul {
     cursor: pointer;
     color: #747474;
     display: flex;
+    width:45%
 }
 
 .tabs li.inactive {
@@ -203,5 +204,17 @@ ul {
 
 .tabs li p {
     margin: 0;
+}
+@media (max-width:500px) {
+  .tabs li{
+    width:100%;
+    display:block;
+    min-height:300px;
+  }
+  .skills-box{
+    padding:0;
+    margin-right:0;
+    margin-left:0;
+  }
 }
 </style>

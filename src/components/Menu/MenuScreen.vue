@@ -336,4 +336,9 @@ a {
     background-color: rgba(0, 0, 0, .8);
     overflow-x: hidden;
 }
+@media (max-width:500px) {
+  .sub-menu{
+    padding:5px;
+  }
+}
 </style>

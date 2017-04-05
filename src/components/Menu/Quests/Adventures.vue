@@ -210,4 +210,18 @@ ul {
     padding: 5px;
     border-radius: 5px;
 }
+@media (max-width:500px) {
+  .tabs{
+    align-items:flex-start;
+    justify-content: flex-start;
+  }
+  .tabs li{
+    width:100%;
+    display:block;
+    min-height:300px;
+  }
+  .skills-box{
+    padding:0;
+  }
+}
 </style>

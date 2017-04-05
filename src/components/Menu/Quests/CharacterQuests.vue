@@ -23,7 +23,10 @@
                                           <rect x="101.149" y="51.067" fill="#ff3737" width="17.126" height="17.127"/>
                                           <rect x="118.275" y="33.94" fill="#ff3737" width="17.128" height="17.127"/>
                                         </g>
-                                      </svg>{{quest.name}}</h3>
+                                      </svg>
+
+
+                      {{quest.name}}</h3>
               </div>
               <div class="quest-details">
                  <h4>Skills Increased:</h4>
@@ -128,6 +131,7 @@ export default {
 }
 
 .quest-row {
+  flex-wrap:wrap;
     padding: 0 20px;
     border: 2px solid #f4f4f4;
     border-radius: 5px;
@@ -161,5 +165,10 @@ ul {
     margin: 0 5px;
     padding: 5px;
     border-radius: 5px;
+}
+@media (max-width:500px) {
+  .quest-name{
+    flex-basis:100%;
+  }
 }
 </style>
