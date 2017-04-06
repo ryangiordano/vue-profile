@@ -3,7 +3,11 @@
 
 <section class="menu">
   <div class="sky"></div>
-  <div id="cloud-scape"></div>
+  <div id="cloud-scape">
+<img src="/src/assets/img/cloud.png" class="cloud" id="cloud-1">
+<img src="/src/assets/img/cloud2.png" class="cloud" id="cloud-2">
+<img src="/src/assets/img/cloud3.png" class="cloud" id="cloud-3">
+  </div>
     <transition @enter="slideUp2" appear>  <div class="skyline2"></div></transition>
   <transition @enter="slideUp" appear>  <div class="skyline"></div></transition>
 
@@ -79,8 +83,8 @@ export default {
             image: null,
             cloudCount: 0,
             birdCount: 0,
-            clouds: ['cloud', 'cloud2', 'cloud3'],
             timeUp:false,
+            cloudAnimations:[],
 
         }
     },
@@ -126,18 +130,18 @@ export default {
         stateChange(e) {
             this.stateText = e.stateText;
         },
-        placeCloud(callback) {
-            let cloud = document.createElement('img');
-            let randomCloud = this.clouds[this.random(0, 2)];
-            cloud.src = `/src/assets/img/${randomCloud}.png`;
-            cloud.classList = 'cloud';
-            this.cloudCount++;
-            cloud.id = `cloud-${this.cloudCount}`;
-
-            let cloudScape = document.getElementById('cloud-scape');
-            cloudScape.appendChild(cloud);
-            return callback(cloud.id);
-        },
+        // placeCloud(callback) {
+        //     let cloud = document.createElement('img');
+        //     let randomCloud = this.clouds[this.random(0, 2)];
+        //     cloud.src = `/src/assets/img/${randomCloud}.png`;
+        //     cloud.classList = 'cloud';
+        //     this.cloudCount++;
+        //     cloud.id = `cloud-${this.cloudCount}`;
+        //
+        //     let cloudScape = document.getElementById('cloud-scape');
+        //     cloudScape.appendChild(cloud);
+        //     return callback(cloud.id);
+        // },
         animateCloud(cloudId) {
             let cloud = document.getElementById(cloudId);
             let tl = new TimelineMax();
@@ -147,21 +151,26 @@ export default {
             }, {
                 ease: Power0.easeNone,
                 x: document.body.clientWidth + 1000,
-                onComplete: this.removeEl,
+                onComplete: this.resetEl,
                 onCompleteParams: [cloud]
             });
+
         },
-        removeEl(el) {
-            let cloudScape = document.getElementById('cloud-scape');
-            cloudScape.removeChild(el);
-            this.placeCloud(this.animateCloud)
+        resetEl(el) {
+            let tl = new TimelineMax();
+            tl.set(el,{x:'-10%'})
+            this.animateCloud(el.id)
         },
         random(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         },
         changed() {}
     },
+    destroyed(){
+    },
     created() {
+
+
         eventBus.$on('toggleSkillModal', (skill) => {
             this.showSkillModal = !this.showSkillModal;
             this.skill = skill;
@@ -192,14 +201,16 @@ export default {
 
     },
     mounted() {
-        //background animations
-        // this.placeCloud(this.animateCloud);
-        // setTimeout(() => {
-        //     this.placeCloud(this.animateCloud)
-        // }, 10000);
-        // setTimeout(() => {
-        //     this.placeCloud(this.animateCloud)
-        // }, 15000);
+        // background animations
+        setTimeout(() => {
+            this.animateCloud('cloud-1')
+        }, 500);
+        setTimeout(() => {
+            this.animateCloud('cloud-2')
+        }, 5000);
+        setTimeout(() => {
+            this.animateCloud('cloud-3')
+        }, 7000);
 
 
         setTimeout(() => {

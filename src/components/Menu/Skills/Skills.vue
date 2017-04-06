@@ -9,12 +9,12 @@
 </div>
 </li>
 </ul>
-  <div class="row skills-box" >
+<div class="row skills-box" >
     <div class="col-xs-12 ">
         <transition @enter="fadeEnter" @leave="fadeLeave" mode="out-in" >
           <div class="character-skills" v-for="character in characters" v-if="chosenCharacter===character.id" :key="character.id" :ref="character.id">
                 <transition-group @enter="fadeEnterUp"  appear>
-                  <div class="" class="skill-row" v-for="(skill,index) in character.skills" @click="toggleSkillModal(skill)" :key="index" :data-index="index">
+                  <div class="" class="skill-row col-xs-12 col-sm-6" v-for="(skill,index) in character.skills" @click="toggleSkillModal(skill)" :key="index" :data-index="index">
                     <div class="col-sm-6 col-xs-12">
                       <p><img class="skill-icon img-responsive" :src="`/src/assets/img/${skill.img}`" alt="">{{skill.name}}</p>
                     </div>

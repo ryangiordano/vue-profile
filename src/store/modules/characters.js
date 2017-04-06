@@ -228,7 +228,7 @@ const state = {
                     about: 'SQL is used to communicate with a database. It is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database.',
                     id: 0,
                     img: 'sql.png',
-                    lvl: 1
+                    lvl: 4
                 },
                 {
                     name: 'Qlikview',
@@ -289,11 +289,7 @@ const state = {
                 frontend: 12,
                 grit: 20
             },
-            links: [{
-                    site: 'Github',
-                    link: 'https://github.com/loxgio',
-                    img: 'github.png'
-                },
+            links: [
                 {
                     site: 'LinkedIn',
                     link: 'https://www.linkedin.com/in/logiordano/',

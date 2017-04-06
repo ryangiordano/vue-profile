@@ -229,7 +229,7 @@
     </div>
 
     <div class="copyright">
-      <h4>&copy;2017 <a href="https://github.com/thedaruma">KaizenDaruma</a></h4>
+      <h4><img src="/src/assets/img/github.png" style="height:20px" alt=""><a href="https://github.com/thedaruma"> Github</a></h4>
     </div>
   </section>
 </template>
