@@ -225,12 +225,34 @@
         <rect x="256.987" y="202.659" fill="#f2f2f2" width="17.791" height="17.791"/>
       </g>
       </svg>
-      <h4 class="menu-start" @click="startPressed">Press Any Key</h4>
+      <h4 class="menu-start" :style="codeColor" @click="startPressed">Press Any Key</h4>
     </div>
 
     <div class="copyright">
-      <h4><img src="/src/assets/img/github.png" style="height:20px" alt=""><a href="https://github.com/thedaruma"> Github</a></h4>
+      <h4 ><img src="/src/assets/img/github.png" style="height:20px" alt=""><a href="https://github.com/thedaruma"> <span :style="codeColor">Github</span></a></h4>
     </div>
+<transition @enter="fadeInScale" @leave="fadeOutScale">
+   <div class="reward" v-if="codeSuccess">
+      <img :src="`/src/assets/img/${chest}`" @click="openChest" id="chest" height="150px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+      <img src="/src/assets/img/goldsparkle.gif" class="sparkle" height="100px" alt="">
+
+    </div>
+
+  </transition>
+  <transition @enter="fadeEnter" @leave="fadeLeave">
+    <message-modal :show="showMessageModal" v-if="showMessageModal" @toggleMessageModal="showMessageModal=false" :message="message" ></message-modal>
+  </transition>
   </section>
 </template>
 
@@ -238,8 +260,23 @@
 import {
     AnimationMixin
 } from '../mixins/Animations';
+import MessageModal from './MessageModal.vue';
 export default {
     mixins: [AnimationMixin],
+    data: function(){
+      return{
+          code:[],
+          keyCodes: [37,38,39,40,65,66],
+          konamiCode:[38,38,40,40,37,39,37,39,66,65],
+          codeSuccess:false,
+          chestOpen:false,
+          message: 'What if...the real treasure...was friendship all along?',
+          showMessageModal:false
+      }
+    },
+    components:{
+      messageModal:MessageModal
+    },
     methods: {
         startPressed() {
             this.$router.push({
@@ -266,18 +303,129 @@ export default {
         },
         shimmer(array){
 
+        },
+        fadeInScale(el,done){
+          let tl = new TimelineMax;
+          tl.from(el,1,{
+            scale:.5,
+            opacity:0,
+            ease: Elastic.easeOut.config(1, 0.75),
+            onComplete:done
+          })
+        },
+        fadeOutScale(el,done){
+          let tl = new TimelineMax;
+          tl.to(el,1,{
+            scale:.5,
+            opacity:0,
+            ease: Elastic.easeOut.config(1, 0.75),
+            onComplete:done
+          })
+        },
+        isKonamiCodeKey(key){
+          let keyCode= key.keyCode;
+          if(this.code.length>10){
+            this.code = [];
+          }
+          return this.keyCodes.filter(e=>e==keyCode).length>0;
+        },
+        openChest(){
+          if(!this.chestOpen){
+            this.sparkleExplosion();
+          }
+          this.chestOpen = true;
+          setTimeout(()=>{
+            this.showMessageModal=true;
+          },500)
+          setTimeout(()=>{
+                        this.codeSuccess=false;
+          },2000)
+
+        },
+        sparkleExplosion(){
+          let $ = string=>document.querySelectorAll(string);
+          let sparkles = Array.from($('.sparkle'));
+          sparkles.map(spark=>{
+            let tl = new TimelineMax();
+            tl.to(spark,1,{
+             ease: Power2.easeOut,
+             y:this.random(-100,-400),
+             opacity:1,
+             x:this.random(-500,500)
+           },'init')
+            .to(spark,.5,{
+              opacity:0,
+              delay:.5
+            },'init')
+          })
+
+        },
+        parseKonamiCode(keyCode){
+          this.code.push(keyCode);
+          for(let i=0; i<this.code.length;i++){
+            if(this.code[i]!= this.konamiCode[i]){
+              return this.code=[];
+            }
+          }
+          let tl = new TimelineMax;
+          let $ = string=>document.querySelectorAll(string);
+          let rects = Array.from($('rect'));
+          let randomRect= [rects[this.random(0,rects.length)],rects[this.random(0,rects.length)],rects[this.random(0,rects.length)],rects[this.random(0,rects.length)],rects[this.random(0,rects.length)],rects[this.random(0,rects.length)]];
+          let polygon = $('polygon');
+          let paths = $('path');
+          tl.staggerTo(randomRect,.5,{
+            fill:'#49bf66',
+          },.1)
+          .staggerTo(randomRect,.2,{
+            fill:'#f4f4f4'
+          },.03)
+
+          if(this.code.length === 10){
+            console.log("Konami Code input successfully");
+            this.codeSuccess=true;
+
+            tl.staggerTo(rects,.5,{
+              fill:'#ebac00'
+            },.01)
+            .to(polygon,.5,{
+              fill:'#ebac00'
+            })
+            .staggerTo(paths,.5,{
+              fill:'#ebac00'
+            },.01)
+
+          }
         }
     },
     created() {
-        window.addEventListener('keyup', this.startPressed);
-        //gather pixels
+      // window.addEventListener('keyup', this.startPressed);
+      window.addEventListener('keyup', (e)=>{
+        if(this.isKonamiCodeKey(e)){
+          // console.log(e.keyCode);
+          this.parseKonamiCode(e.keyCode);
+        }else{
+          this.startPressed();
+        }
+      });
+
 
 
     },
-    mounted() {
-        let $ = string => {
-            return document.querySelectorAll(string);
+    computed:{
+      codeColor(){
+        if(this.codeSuccess){
+          return{color: '#ebac00'}
         }
+      },
+      chest(){
+        if(this.chestOpen){
+          return 'chest-open.png';
+        }
+        return 'chest.png'
+      }
+    },
+    mounted() {
+        let $ = string=>document.querySelectorAll(string);
 
         let aRects = $('#a rect'),
          rRects = $('#r rect'),
@@ -331,13 +479,26 @@ section {
     width: 100vw;
     position: absolute;
 }
-
+.reward{
+  position:absolute;
+  bottom:5%;
+  left:5%;
+}
+.sparkle{
+  position:absolute;
+  top:25%;
+  left:25%;
+  pointer-events:none;
+  opacity:0;
+}
 h1 {
     font-family: 'VT323', monospace;
     color: #f2f2f2;
     font-size: 80px
 }
-
+h4 span{
+  margin-left:5px;
+}
 svg {
     height: 35vh;
 }

@@ -113,11 +113,7 @@ export const routes = [{
                       name: 'adventure-detail',
                       component: QuestDetail
                   },
-                  {
-                      path: '',
-                      name: 'adventure-detail',
-                      component: CharacterQuests
-                  },
+
                 ]
             },
 

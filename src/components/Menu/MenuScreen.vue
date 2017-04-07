@@ -14,14 +14,6 @@
 
 <transition @enter="fadeInPage">  <div  v-if="timeUp" class="overlay">
         <div class="container">
-          <!-- <div class="row hidden-sm">
-            <div class="col-md-12">
-              <div class="sub-menu button">
-Nav
-              </div>
-
-            </div>
-          </div> -->
           <div class="row">
             <div class="col-sm-12">
               <state-bar :stateText="stateText" @change="changed"></state-bar>
@@ -83,8 +75,8 @@ export default {
             image: null,
             cloudCount: 0,
             birdCount: 0,
-            timeUp:false,
-            cloudAnimations:[],
+            timeUp: false,
+            cloudAnimations: [],
 
         }
     },
@@ -102,75 +94,55 @@ export default {
         imageModal: ImageModal
     },
     methods: {
-      fadeInPage(el,done){
-        let tl = new TimelineMax;
-        let delay= el.dataset.index*.05;
-        tl.from(el,.5,{
-          opacity:0,
-          onComplete:done
-        })
-      },
-      slideUp(el,done){
-        let tl = new TimelineMax;
-        tl.from(el,1.5,{
-          y:80,
-          ease: Power2.easeOut,
-          delay:0,
-          onComplete:done
-        })
-      },
-      slideUp2(el,done){
-        let tl = new TimelineMax;
-        tl.from(el,3,{
-          y:80,
-          ease: Power2.easeOut,
-          onComplete:done
-        })
-      },
+        fadeInPage(el, done) {
+            let tl = new TimelineMax;
+            let delay = el.dataset.index * .05;
+            tl.from(el, .5, {
+                opacity: 0,
+                onComplete: done
+            })
+        },
+        slideUp(el, done) {
+            let tl = new TimelineMax;
+            tl.from(el, 1.5, {
+                y: 80,
+                ease: Power2.easeOut,
+                delay: 0,
+                onComplete: done
+            })
+        },
+        slideUp2(el, done) {
+            let tl = new TimelineMax;
+            tl.from(el, 3, {
+                y: 80,
+                ease: Power2.easeOut,
+                onComplete: done
+            })
+        },
         stateChange(e) {
             this.stateText = e.stateText;
         },
-        // placeCloud(callback) {
-        //     let cloud = document.createElement('img');
-        //     let randomCloud = this.clouds[this.random(0, 2)];
-        //     cloud.src = `/src/assets/img/${randomCloud}.png`;
-        //     cloud.classList = 'cloud';
-        //     this.cloudCount++;
-        //     cloud.id = `cloud-${this.cloudCount}`;
-        //
-        //     let cloudScape = document.getElementById('cloud-scape');
-        //     cloudScape.appendChild(cloud);
-        //     return callback(cloud.id);
-        // },
-        animateCloud(cloudId) {
+        animateCloud(cloudId, delayAnimation) {
             let cloud = document.getElementById(cloudId);
             let tl = new TimelineMax();
-            tl.fromTo(cloud, this.random(35, 60), {
-                ease: Power0.easeNone,
+            tl.set(cloud, {
                 y: this.random(0, 400)
-            }, {
-                ease: Power0.easeNone,
-                x: document.body.clientWidth + 1000,
-                onComplete: this.resetEl,
-                onCompleteParams: [cloud]
             });
+            tl.to(cloud, this.random(35, 60), {
+                ease: Power0.easeNone,
+                delay: delayAnimation,
+                x: document.body.clientWidth + 1000,
+                repeat: -1
 
-        },
-        resetEl(el) {
-            let tl = new TimelineMax();
-            tl.set(el,{x:'-10%'})
-            this.animateCloud(el.id)
+            })
+
         },
         random(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         },
         changed() {}
     },
-    destroyed(){
-    },
     created() {
-
-
         eventBus.$on('toggleSkillModal', (skill) => {
             this.showSkillModal = !this.showSkillModal;
             this.skill = skill;
@@ -197,24 +169,19 @@ export default {
                 }
             })
         });
-
-
     },
     mounted() {
         // background animations
-        setTimeout(() => {
-            this.animateCloud('cloud-1')
-        }, 500);
-        setTimeout(() => {
-            this.animateCloud('cloud-2')
-        }, 5000);
-        setTimeout(() => {
-            this.animateCloud('cloud-3')
-        }, 7000);
-
+        // Chrome 1+
+        var isChrome = !!window.chrome && !!window.chrome.webstore;
+        if(isChrome){
+          this.animateCloud('cloud-1', .5);
+          this.animateCloud('cloud-2', 5);
+          this.animateCloud('cloud-3', 7);
+        }
 
         setTimeout(() => {
-            this.timeUp=true;
+            this.timeUp = true;
         }, 1000);
 
     }
@@ -244,6 +211,7 @@ section.menu {
     background-attachment: fixed;
     background-image: url('/src/assets/img/skyline.png')
 }
+
 .skyline2 {
     height: 100vh;
     width: 100vw;
@@ -287,7 +255,11 @@ section.menu {
     top: 0;
     height: 50px;
 }
-
+/*@media (min-width:1800px) {
+  .container{
+    width:70%;
+  }
+}*/
 .sub-menu {
     overflow: hidden;
     /*background-color: rgba(40, 100, 201, 0.71);*/
@@ -304,13 +276,14 @@ section.menu {
     border: 3px solid #f4f4f4;
     margin-bottom: 20px;
 }
-.sub-menu.button{
-  height:100%;
-  width:100%;
-  display:flex;
-  color:#f4f4f4;
 
-  padding:20px;
+.sub-menu.button {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    color: #f4f4f4;
+
+    padding: 20px;
 }
 
 .sub-menu p {
@@ -344,12 +317,13 @@ a {
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(30, 30, 30, .6);
     overflow-x: hidden;
 }
+
 @media (max-width:500px) {
-  .sub-menu{
-    padding:5px;
-  }
+    .sub-menu {
+        padding: 5px;
+    }
 }
 </style>

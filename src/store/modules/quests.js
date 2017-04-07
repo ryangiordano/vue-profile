@@ -121,8 +121,12 @@ const state = {
             complete: true,
             id: 3,
             links: [{
-                url: "http://www.gocodigo.com",
-                text: 'Codigo'
+                url: "https://codigo.gocodigo.net/Preview/Content/413969/?handle=billnye",
+                text: 'Bill Nye Twitter'
+            },
+            {
+                url: "https://codigo.gocodigo.net/Preview/Content/421089/",
+                text: 'Word of the Day'
             }],
             copy: "Developed 'smart content' for a digital design agency's digital signage product.  Created reusable modules using JavaScript(ES6) and jQuery that could be added to digital signage to display dynamic data from Twitter, AP News, the National Weather Service, Google Docs, Youtube, Vimeo and other services.  Users can customize the output by passing parameters into the digital signage editor.",
             skills: [{
@@ -179,6 +183,10 @@ const state = {
                 {
                     url: "http://www.gocodigo.com/customers/ardent/kiosk/",
                     text: 'Ardent CU Kiosk'
+                },
+                {
+                    url: "http://www.gocodigo.com/customers/elga/kiosk/",
+                    text: 'ELGA CU Kiosk'
                 }
             ],
             copy: "Created a series of interactive and informative displays for credit unions and large retailers and institutions. Kiosks were developed for iPads, iPad Pro, and large-format touch-panel devices.  Using GSAP, a JavaScript animation library, I transformed ordinary web-pages into a fluid experience.  Users were able to peruse data about the institution, mail themselves brochures and documents, and enter into branch-specific queues from the kiosk devices.<br><br> I also developed interactive maps and layouts of the institutions the kiosks were housed in.",
